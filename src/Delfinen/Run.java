@@ -7,6 +7,8 @@ public class Run {
     void run(){
         ui.start();
 
+        ui.exit();
+
 
     }
 }
