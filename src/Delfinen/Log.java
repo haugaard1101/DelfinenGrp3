@@ -31,7 +31,7 @@ Scanner scanner = new Scanner(System.in);
 
         }
     }
-
+/*
     public void loadMembers() throws FileNotFoundException {
         memberList.clear();
         Scanner in = new Scanner(new File("Memberfile.txt"));
@@ -45,12 +45,28 @@ Scanner scanner = new Scanner(System.in);
         }
     }
 
+ */
+
     public void topFive() {
 
     }
 
     public void addMember() {
 
+
+    }
+
+    public void displayMember(){
+        for(Member member: memberList){
+            System.out.println(member);
+        }
+        String isAre = "are";
+        String s = "s";
+        if(memberList.size() == 1){
+            isAre = "is";
+            s = "";
+        }
+        System.out.println(isAre + " " + memberList.size() + s);
     }
 
 
