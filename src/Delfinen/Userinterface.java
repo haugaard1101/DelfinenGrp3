@@ -2,7 +2,7 @@ package Delfinen;
 
 public class Userinterface {
 
-    void start() {
+    void start(){
         System.out.println("\n\t\t\t\t\t\t\t\t\t\t\tWELCOME TO: ");
         System.out.println("""
                  ____                                                    _      _           _       _                     \s
@@ -19,7 +19,7 @@ public class Userinterface {
                 """);
     }
 
-    void exit() {
+    void exit(){
         System.out.println("""
                  ____                                                    _      _           _       _                     \s
                  / ___|  __   __   ____    _ __ ___    _ __ ___     ___  | | __ | |  _   _  | |__   | |__     ___   _ __   \s
@@ -36,56 +36,44 @@ public class Userinterface {
         System.exit(0);
     }
 
-    void invalidAnswer() {
+    void invalidAnswer(){
         System.out.println("\nyou entered an invalid answer!\n");
     }
 
-    public void ageText() {
+    public void ageText(){
         System.out.print("Enter your age: ");
     }
-
-    public void nameText() {
+    public void nameText(){
         System.out.print("Enter yout name: ");
     }
-
-    public void emailText() {
+    public void emailText(){
         System.out.print("Enter your email: ");
     }
-
-    public void phoneNumberText() {
+    public void phoneNumberText(){
         System.out.print("Enter your phone number: ");
     }
-
-    public void adresstext() {
+    public void adresstext(){
         System.out.print("Enter your adress");
     }
-
-    public void dateOfBirthText() {
+    public void dateOfBirthText(){
         System.out.print("Enter your date of birth: ");
     }
-
-    public void paymentInfoText() {
+    public void paymentInfoText(){
         System.out.print("Enter your payment info: ");
     }
-
-    public void typeOfMemberText() {
+    public void typeOfMemberText(){
         System.out.print("Enter your type of member: ");
     }
-
-    public void haveBennCSText() {
+    private void haveBennCSText(){
         System.out.print("Enter if your have been C S: ");
     }
 
-    public void isPassiveText() {
-        System.out.print("Do you want a list of passive members?: ");
-    }
-
-    void printMain() {
+    void printMain(){
 
         System.out.println("""
-                                
+                
                 Main menu:
-                             
+             
                 Save         [1]
                 Load         [2]
                 Subscription [3]
