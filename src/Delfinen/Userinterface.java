@@ -43,6 +43,7 @@ public class Userinterface {
     public void ageText(){
         System.out.print("Enter your age: ");
     }
+
     public void nameText(){
         System.out.print("Enter yout name: ");
     }
