@@ -5,20 +5,20 @@ public abstract class Member {
     private String name;
     private String email;
     private int phoneNumber;
-    private String adress;
+    private String address;
     private int dateOfBirth;
     private String paymentInfo;
     private String typeOfMember;
    private boolean haveBeenCompSwim;
    private boolean isPassive;
 
-    Member(int age, String name, String email, int phoneNumber, String adress, int dateOfBirth, String paymentInfo,
+    Member(int age, String name, String email, int phoneNumber, String address, int dateOfBirth, String paymentInfo,
            String typeOfMember, boolean haveBeenCS, boolean isPassive) {
         this.age = age;
         this.name=name;
         this.email = email;
         this.phoneNumber = phoneNumber;
-        this.adress=adress;
+        this.address =address;
         this.dateOfBirth=dateOfBirth;
         this.paymentInfo=paymentInfo;
         this.typeOfMember=typeOfMember;
@@ -43,8 +43,8 @@ public abstract class Member {
         return phoneNumber;
     }
 
-    public String getAdress(){
-        return adress;
+    public String getAddress(){
+        return address;
     }
     public String getPaymentInfo(){
         return paymentInfo;
