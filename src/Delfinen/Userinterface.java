@@ -45,7 +45,7 @@ public class Userinterface {
     }
 
     public void nameText() {
-        System.out.print("Enter yout name: ");
+        System.out.print("Enter your name: ");
     }
 
     public void emailText() {
