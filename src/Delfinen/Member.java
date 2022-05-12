@@ -59,4 +59,5 @@ public abstract class Member {
         return isPassive;
     }
 
+
 }
