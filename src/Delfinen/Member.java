@@ -9,7 +9,7 @@ public abstract class Member {
     private int dateOfBirth;
     private String paymentInfo;
     private String typeOfMember;
-   private boolean haveBeenCS;
+   private boolean haveBeenCompSwim;
    private boolean isPassive;
 
     Member(int age, String name, String email, int phoneNumber, String adress, int dateOfBirth, String paymentInfo,
@@ -22,7 +22,7 @@ public abstract class Member {
         this.dateOfBirth=dateOfBirth;
         this.paymentInfo=paymentInfo;
         this.typeOfMember=typeOfMember;
-        this.haveBeenCS=haveBeenCS;
+        this.haveBeenCompSwim =haveBeenCS;
         this.isPassive = isPassive;
     }
 
@@ -52,12 +52,14 @@ public abstract class Member {
     public String getTypeOfMember(){
         return typeOfMember;
     }
-    public boolean getHaveBeenCS(){
-        return haveBeenCS;
+    public boolean getHaveBeenCompSwim(){
+        return haveBeenCompSwim;
     }
     public boolean getIsPassive() {
         return isPassive;
     }
-
+    public int getDateOfBirth(){
+        return dateOfBirth;
+    }
 
 }
