@@ -46,7 +46,28 @@ public class Userinterface {
     public void nameText(){
         System.out.print("Enter yout name: ");
     }
-    public void emailText
+    public void emailText(){
+        System.out.print("Enter your email: ");
+    }
+    public void phoneNumberText(){
+        System.out.print("Enter your phone number: ");
+    }
+    public void adresstext(){
+        System.out.print("Enter your adress");
+    }
+    public void dateOfBirthText(){
+        System.out.print("Enter your date of birth: ");
+    }
+    public void paymentInfoText(){
+        System.out.print("Enter your payment info: ");
+    }
+    public void typeOfMemberText(){
+        System.out.print("Enter your type of member: ");
+    }
+    private void haveBennCSText(){
+        System.out.print("Enter if your have been C S: ");
+    }
+
     void printMain(){
 
         System.out.println("""
