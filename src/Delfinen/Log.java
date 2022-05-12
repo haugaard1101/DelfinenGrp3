@@ -17,7 +17,7 @@ Scanner scanner = new Scanner(System.in);
     }
 
     public void saveMembers() throws FileNotFoundException {
-        
+
         PrintStream ps = new PrintStream("Memberfile.txt");
         for (Member member : memberList) {
             ps.println(member);
