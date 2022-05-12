@@ -65,8 +65,8 @@ public class Userinterface {
     public void typeOfMemberText(){
         System.out.print("Enter your type of member: ");
     }
-    private void haveBennCSText(){
-        System.out.print("Enter if your have been C S: ");
+    private void haveBennCompSwimText(){
+        System.out.print("Enter if your have been Comp Swimmer: ");
     }
 
     void printMain(){
