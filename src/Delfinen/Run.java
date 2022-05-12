@@ -8,8 +8,9 @@ public class Run {
     Userinterface ui = new Userinterface();
     Log log = new Log();
 
-    void run() {
+    void run() throws FileNotFoundException {
         ui.start();
+        bla();
 
         ui.exit();
 
