@@ -10,9 +10,10 @@ public abstract class Member {
     private String paymentInfo;
     private String typeOfMember;
    private boolean haveBeenCS;
+   private boolean isPassive;
 
     Member(int age, String name, String email, int phoneNumber, String adress, int dateOfBirth, String paymentInfo,
-           String typeOfMember, boolean haveBeenCS) {
+           String typeOfMember, boolean haveBeenCS, boolean isPassive) {
         this.age = age;
         this.name=name;
         this.email = email;
@@ -22,6 +23,7 @@ public abstract class Member {
         this.paymentInfo=paymentInfo;
         this.typeOfMember=typeOfMember;
         this.haveBeenCS=haveBeenCS;
+        this.isPassive = isPassive;
     }
 
     public Member() {
@@ -52,6 +54,9 @@ public abstract class Member {
     }
     public boolean getHaveBeenCS(){
         return haveBeenCS;
+    }
+    public boolean getIsPassive() {
+        return isPassive;
     }
 
 }

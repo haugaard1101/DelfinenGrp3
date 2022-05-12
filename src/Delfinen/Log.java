@@ -7,10 +7,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Log {
-
-    private ArrayList<Member> memberList=new ArrayList<>();
-
-
+Scanner scanner = new Scanner(System.in);
+    private ArrayList<Member> memberList = new ArrayList<>();
+    private ArrayList<Member> passiveMembers = new ArrayList<>();
 
     public void calcPayment() {
 
@@ -18,8 +17,16 @@ public class Log {
     }
 
     public void saveMembers() throws FileNotFoundException {
-        PrintStream ps=new PrintStream("Memberfile.txt");
-        for (Member member:memberList){
+        
+        PrintStream ps = new PrintStream("Memberfile.txt");
+        for (Member member : memberList) {
+            ps.println(member);
+
+        }
+    }
+    public void savePassiveMembers() throws FileNotFoundException {
+        PrintStream ps = new PrintStream("PassiveMemberfile.txt");
+        for (Member member : passiveMembers) {
             ps.println(member);
 
         }
@@ -27,25 +34,24 @@ public class Log {
 
     public void loadMembers() throws FileNotFoundException {
         memberList.clear();
-        Scanner in =new Scanner(new File("Memberfile.txt"));
-        Member members=new Member;
+        Scanner in = new Scanner(new File("Memberfile.txt"));
+        Member members = new Member;
 
-        Member member=(String) ;
+        Member member = (String);
 
-        while (in.hasNextLine()){
-            member=in.next();
+        while (in.hasNextLine()) {
+            member = in.next();
             memberList.add(member);
         }
     }
+
     public void topFive() {
 
     }
-    public void addMember(){
+
+    public void addMember() {
 
     }
-
-
-
 
 
 }

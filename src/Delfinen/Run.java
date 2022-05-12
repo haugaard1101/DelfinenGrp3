@@ -27,6 +27,7 @@ public class Run {
                 case 2 -> log.loadMembers();
                 case 3 -> log.calcPayment();
                 case 4 -> log.topFive();
+                case 5 -> log.savePassiveMembers();
                 case 0 -> ui.exit();
                 default -> System.out.println("unknown command");
             }
