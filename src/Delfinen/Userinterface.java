@@ -40,13 +40,24 @@ public class Userinterface {
         System.out.println("\nyou entered an invalid answer!\n");
     }
 
+    public void ageText(){
+        System.out.print("Enter your age: ");
+    }
+    public void nameText(){
+        System.out.print("Enter yout name: ");
+    }
+    public void emailText
     void printMain(){
+
         System.out.println("""
                 
                 Main menu:
-                
-                
-                Exit [0]
+             
+                Save         [1]
+                Load         [2]
+                Subscription [3]
+                Top Five     [4]
+                Exit         [0]
                 """);
     }
 }

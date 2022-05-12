@@ -1,6 +1,6 @@
 package Delfinen;
 
-public class Member {
+public abstract class Member {
     private int age;
     private String name;
     private String email;
@@ -23,6 +23,11 @@ public class Member {
         this.typeOfMember=typeOfMember;
         this.haveBeenCS=haveBeenCS;
     }
+
+    public Member() {
+
+    }
+
     public int getAge(){
         return age;
     }
