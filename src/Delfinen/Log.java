@@ -11,6 +11,8 @@ Scanner scanner = new Scanner(System.in);
     private ArrayList<Member> memberList = new ArrayList<>();
     private ArrayList<Member> passiveMembers = new ArrayList<>();
 
+    Userinterface ui = new Userinterface();
+
     public void calcPayment() {
 
 
@@ -52,6 +54,16 @@ Scanner scanner = new Scanner(System.in);
     }
 
     public void addMember() {
+        ui.ageText();
+        Scanner in = new Scanner(System.in);
+        String name = "nothing";
+        while (!name.isBlank() && in.hasNextLine()){
+            name = in.nextLine();
+            if(!name.isBlank()){
+                memberList.add(name);
+
+            }
+        }
 
 
     }
