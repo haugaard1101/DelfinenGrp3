@@ -26,9 +26,7 @@ public abstract class Member {
         this.isPassive = isPassive;
     }
 
-    public Member() {
 
-    }
 
     public int getAge() {
         return age;
