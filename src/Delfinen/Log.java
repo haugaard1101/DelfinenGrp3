@@ -6,12 +6,12 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Log {
-Scanner scanner = new Scanner(System.in);
-    private ArrayList<Member> memberList = new ArrayList<>();
-    private ArrayList<Member> passiveMembers = new ArrayList<>();
 
-    Userinterface ui = new Userinterface();
+public class Log {
+    Scanner scanner = new Scanner(System.in);
+    private ArrayList<Member> memberList = new ArrayList<>();
+
+    UserInterface ui = new UserInterface();
 
     public void calcPayment() {
 
@@ -26,28 +26,28 @@ Scanner scanner = new Scanner(System.in);
 
         }
     }
-    public void savePassiveMembers() throws FileNotFoundException {
-        PrintStream ps = new PrintStream("PassiveMemberfile.txt");
-        for (Member member : passiveMembers) {
-            ps.println(member);
 
-        }
-    }
-/*
-    public void loadMembers() throws FileNotFoundException {
-        memberList.clear();
-        Scanner in = new Scanner(new File("Memberfile.txt"));
-        Member members = new Member;
 
-        Member member = (String);
-
+    public ArrayList<Member> loadMembers() throws FileNotFoundException {
+        ArrayList<Member>member = new ArrayList<>();
+        Scanner in = new Scanner(new File("Memberfile.csv"));
         while (in.hasNextLine()) {
-            member = in.next();
-            memberList.add(member);
+            String line = in.nextLine();
+            //linje scanner
+            Scanner lineScanner = new Scanner(line).useDelimiter(";");
+            String name = lineScanner.next();
+            int age = lineScanner.nextInt();
+            memberList.add(new Member(name, age));
         }
-    }
+        return memberList;
 
- */
+
+
+        }
+
+
+
+
 
     public void topFive() {
 
@@ -57,24 +57,36 @@ Scanner scanner = new Scanner(System.in);
         ui.ageText();
         Scanner in = new Scanner(System.in);
         String name = "nothing";
-        while (!name.isBlank() && in.hasNextLine()){
+        int age = 0;
+        while (!name.isBlank() && in.hasNextLine()) {
             name = in.nextLine();
-            if(!name.isBlank()){
-                memberList.add(name);
+            if (!name.isBlank()) {
+                memberList.add(new Member(name, age));
 
             }
         }
+    }
+    public void removeMember(){
+        ui.ageText();
+        Scanner in = new Scanner(System.in);
+        String name = "nothing";
 
+        while (!name.isBlank() && in.hasNextLine()) {
+            name = in.nextLine();
+            if (!name.isBlank()) {
+               // memberList.remove(); skal laves om til id list. !!
 
+            }
+        }
     }
 
-    public void displayMember(){
-        for(Member member: memberList){
+    public void displayMember() {
+        for (Member member : memberList) {
             System.out.println(member);
         }
         String isAre = "are";
         String s = "s";
-        if(memberList.size() == 1){
+        if (memberList.size() == 1) {
             isAre = "is";
             s = "";
         }

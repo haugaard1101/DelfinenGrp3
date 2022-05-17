@@ -1,6 +1,6 @@
 package Delfinen;
 
-public abstract class Member {
+public class Member {
     private int age;
     private String name;
     private String email;
@@ -11,9 +11,11 @@ public abstract class Member {
     private String typeOfMember;
     private boolean haveBeenCompSwim;
     private boolean isPassive;
+    private int id;
 
-    Member(int age, String name, String email, int phoneNumber, String address, int dateOfBirth, String paymentInfo,
-           String typeOfMember, boolean haveBeenCS, boolean isPassive) {
+
+    Member(String name, int age, String email, int phoneNumber, String address, int dateOfBirth, String paymentInfo,
+           String typeOfMember, boolean haveBeenCS, boolean isPassive,int id) {
         this.age = age;
         this.name = name;
         this.email = email;
@@ -24,8 +26,13 @@ public abstract class Member {
         this.typeOfMember = typeOfMember;
         this.haveBeenCompSwim = haveBeenCS;
         this.isPassive = isPassive;
+        this.id=id;
     }
 
+    public Member(String name, int age) {
+        this.name=name;
+        this.age=age;
+    }
 
 
     public int getAge() {
@@ -67,5 +74,6 @@ public abstract class Member {
     public int getDateOfBirth() {
         return dateOfBirth;
     }
+    public int getId(){return id;}
 
 }

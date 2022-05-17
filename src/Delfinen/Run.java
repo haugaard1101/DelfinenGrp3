@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Run {
 
-    Userinterface ui = new Userinterface();
+    UserInterface ui = new UserInterface();
     Log log = new Log();
 
     void run() throws FileNotFoundException {
@@ -25,10 +25,9 @@ public class Run {
             choice = in.nextInt();
             switch (choice) {
                 case 1 -> log.saveMembers();
-                //case 2 -> log.loadMembers();
+                case 2 -> log.loadMembers();
                 case 3 -> log.calcPayment();
                 case 4 -> log.topFive();
-                case 5 -> log.savePassiveMembers();
                 case 0 -> ui.exit();
                 default -> System.out.println("unknown command");
             }

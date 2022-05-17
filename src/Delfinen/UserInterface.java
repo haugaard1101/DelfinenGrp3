@@ -1,6 +1,22 @@
 package Delfinen;
 
-public class Userinterface {
+import java.util.Scanner;
+
+public class UserInterface {
+
+    private Scanner in =new Scanner(System.in);
+    private String decision;
+    private int decisionNumb;
+
+    public String getDecision (){
+        decision=in.nextLine();
+        return decision;
+    }
+    public int getDecisionNumb(){
+        decisionNumb=in.nextInt();
+        return decisionNumb;
+    }
+
 
     void start() {
         System.out.println("\n\t\t\t\t\t\t\t\t\t\t\tWELCOME TO: ");

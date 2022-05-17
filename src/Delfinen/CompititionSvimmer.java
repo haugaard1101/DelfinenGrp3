@@ -8,7 +8,7 @@ public class CompititionSvimmer extends Member {
      CompititionSvimmer(int age, String name, String email, int phoneNumber, String address, int dateOfBirth, String paymentInfo,
                         String typeOfMember, boolean haveBeenCS, boolean isPassive, String disciplin,
                         String trainingResult,int dateOfTraining){
-         super(age,name, email,phoneNumber,address,dateOfBirth,paymentInfo,typeOfMember, haveBeenCS, isPassive );
+         super(name,age, email,phoneNumber,address,dateOfBirth,paymentInfo,typeOfMember, haveBeenCS, isPassive);
          this.disciplin=disciplin;
          this.trainingResult=trainingResult;
          this.dateOfTraining=dateOfTraining;
