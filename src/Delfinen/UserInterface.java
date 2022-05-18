@@ -56,10 +56,6 @@ public class UserInterface {
         System.out.println("\nyou entered an invalid answer!\n");
     }
 
-    public void ageText() {
-        System.out.print("Enter your age: ");
-    }
-
     public void nameText() {
         System.out.print("Enter your name: ");
     }
@@ -72,12 +68,12 @@ public class UserInterface {
         System.out.print("Enter your phone number: ");
     }
 
-    public void adresstext() {
-        System.out.print("Enter your adress");
+    public void addressText() {
+        System.out.print("Enter your address");
     }
 
     public void dateOfBirthText() {
-        System.out.print("Enter your date of birth: ");
+        System.out.print("Enter your date of birth  (yyyy/mm/dd) : ");
     }
 
     public void paymentInfoText() {
@@ -102,6 +98,9 @@ public class UserInterface {
                 Load         [2]
                 Subscription [3]
                 Top Five     [4]
+                Add          [5]
+                Remove       [6]
+                Display      [7]
                 Exit         [0]
                 """);
     }

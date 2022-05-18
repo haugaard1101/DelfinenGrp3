@@ -1,43 +1,40 @@
 package Delfinen;
 
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+
 public class Member {
-    private int age;
     private String name;
     private String email;
     private int phoneNumber;
     private String address;
-    private int dateOfBirth;
     private String paymentInfo;
     private String typeOfMember;
     private boolean haveBeenCompSwim;
     private boolean isPassive;
     private int id;
+    private LocalDate dateOfBirth;
 
 
-    Member(String name, int age, String email, int phoneNumber, String address, int dateOfBirth, String paymentInfo,
-           String typeOfMember, boolean haveBeenCS, boolean isPassive,int id) {
-        this.age = age;
+    Member(String name, int age, String email, int phoneNumber, String address, LocalDate dateOfBirth, String paymentInfo,
+           String typeOfMember, boolean haveBeenCS, boolean isPassive, int id) {
+        this.dateOfBirth = dateOfBirth;
         this.name = name;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.address = address;
-        this.dateOfBirth = dateOfBirth;
         this.paymentInfo = paymentInfo;
         this.typeOfMember = typeOfMember;
         this.haveBeenCompSwim = haveBeenCS;
         this.isPassive = isPassive;
-        this.id=id;
+        this.id = id;
     }
 
-    public Member(String name, int age) {
-        this.name=name;
-        this.age=age;
+    public Member(String name, LocalDate dateOfBirth) {
+        this.name = name;
+        this.dateOfBirth = dateOfBirth;
     }
 
-
-    public int getAge() {
-        return age;
-    }
 
     public String getName() {
         return name;
@@ -71,9 +68,19 @@ public class Member {
         return isPassive;
     }
 
-    public int getDateOfBirth() {
+    public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
-    public int getId(){return id;}
 
+    public int getId() {
+        return id;
+    }
+
+    public int calcAge() {
+        LocalDate now = LocalDate.now();
+        LocalDate date = LocalDate.of(2004, 5, 19);
+        System.out.println();
+        return (int)ChronoUnit.YEARS.between(dateOfBirth, LocalDate.now());
+        //hvordan skal det skrives ind om det er fra scanner
+    }
 }

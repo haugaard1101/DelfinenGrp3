@@ -3,7 +3,11 @@ package Delfinen;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.chrono.ChronoLocalDate;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Scanner;
 
 
@@ -13,6 +17,12 @@ public class Log {
 
     UserInterface ui = new UserInterface();
 
+    public void writeMember(PrintStream out, Member member){
+        out.print(member.getName());
+        out.print(";");
+    }
+
+
     public void calcPayment() {
 
 
@@ -20,16 +30,16 @@ public class Log {
 
     public void saveMembers() throws FileNotFoundException {
 
-        PrintStream ps = new PrintStream("Memberfile.txt");
+        PrintStream out = new PrintStream("MemberFile.csv");
         for (Member member : memberList) {
-            ps.println(member);
+            writeMember(out,member);
 
         }
     }
 
 
     public ArrayList<Member> loadMembers() throws FileNotFoundException {
-        ArrayList<Member>member = new ArrayList<>();
+        ArrayList<Member> member = new ArrayList<>();
         Scanner in = new Scanner(new File("Memberfile.csv"));
         while (in.hasNextLine()) {
             String line = in.nextLine();
@@ -37,16 +47,12 @@ public class Log {
             Scanner lineScanner = new Scanner(line).useDelimiter(";");
             String name = lineScanner.next();
             int age = lineScanner.nextInt();
-            memberList.add(new Member(name, age));
+            memberList.add(new Member()); // se på dette!!
         }
         return memberList;
 
 
-
-        }
-
-
-
+    }
 
 
     public void topFive() {
@@ -54,27 +60,28 @@ public class Log {
     }
 
     public void addMember() {
-        ui.ageText();
+        ui.dateOfBirthText();
         Scanner in = new Scanner(System.in);
         String name = "nothing";
         int age = 0;
         while (!name.isBlank() && in.hasNextLine()) {
             name = in.nextLine();
             if (!name.isBlank()) {
-                memberList.add(new Member(name, age));
+                memberList.add(new Member(name,LocalDate.ofEpochDay(age))); //se på dette!
 
             }
         }
     }
-    public void removeMember(){
-        ui.ageText();
+
+    public void removeMember() {
+        /// lave id
         Scanner in = new Scanner(System.in);
         String name = "nothing";
 
         while (!name.isBlank() && in.hasNextLine()) {
             name = in.nextLine();
             if (!name.isBlank()) {
-               // memberList.remove(); skal laves om til id list. !!
+                // memberList.remove(); skal laves om til id list. !!
 
             }
         }
