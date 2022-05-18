@@ -9,7 +9,7 @@ public class CompititionSwimmer extends Member {
 
     CompititionSwimmer(int age, String name, String email, int phoneNumber, String address, LocalDate dateOfBirth, String paymentInfo,
                        String typeOfMember, boolean haveBeenCS, boolean isPassive, String disciplin,
-                       String trainingResult, int dateOfTraining, int id) {
+                       String trainingResult, int dateOfTraining, String id) {
         super(name, age, email, phoneNumber, address,dateOfBirth, paymentInfo, typeOfMember, haveBeenCS, isPassive,id);
         this.disciplin = disciplin;
         this.trainingResult = trainingResult;

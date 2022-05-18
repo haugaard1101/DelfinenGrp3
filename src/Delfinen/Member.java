@@ -12,12 +12,12 @@ public class Member {
     private String typeOfMember;
     private boolean haveBeenCompSwim;
     private boolean isPassive;
-    private int id;
+    private String id;
     private LocalDate dateOfBirth;
 
 
     Member(String name, int age, String email, int phoneNumber, String address, LocalDate dateOfBirth, String paymentInfo,
-           String typeOfMember, boolean haveBeenCS, boolean isPassive, int id) {
+           String typeOfMember, boolean haveBeenCS, boolean isPassive, String id) {
         this.dateOfBirth = dateOfBirth;
         this.name = name;
         this.email = email;
@@ -33,6 +33,14 @@ public class Member {
     public Member(String name, LocalDate dateOfBirth) {
         this.name = name;
         this.dateOfBirth = dateOfBirth;
+    }
+
+    public Member(String name) {
+
+    }
+
+    public Member(String name, int age, String id, String isPassive) {
+
     }
 
 
@@ -72,7 +80,7 @@ public class Member {
         return dateOfBirth;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
@@ -82,5 +90,11 @@ public class Member {
         System.out.println();
         return (int)ChronoUnit.YEARS.between(dateOfBirth, LocalDate.now());
         //hvordan skal det skrives ind om det er fra scanner
+    }
+
+    @Override
+    public String toString() {
+        return
+                 name + " "+ " " + isPassive + " age " + dateOfBirth + " id "+ id;
     }
 }

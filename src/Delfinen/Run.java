@@ -28,8 +28,8 @@ public class Run {
                 case 2 -> log.loadMembers();
                 case 3 -> log.calcPayment();
                 case 4 -> log.topFive();
-                case 5 -> log.addMember();
-                case 6 -> log.removeMember();
+                case 5 -> ui.create();
+                case 6 -> ui.delete();
                 case 7 -> log.displayMember();
                 case 0 -> ui.exit();
                 default -> System.out.println("unknown command");

@@ -4,16 +4,44 @@ import java.util.Scanner;
 
 public class UserInterface {
 
-    private Scanner in =new Scanner(System.in);
+    private Scanner in = new Scanner(System.in);
     private String decision;
     private int decisionNumb;
+    private Log application;
 
-    public String getDecision (){
-        decision=in.nextLine();
+    public UserInterface (Log application){
+        this.application=application;
+    }
+    public void delete(){
+        getDecision();
+        String id= in.nextLine();
+        boolean del=application.remove(id);
+
+    }
+
+    public void create (){
+        System.out.print("create new member:" );
+        System.out.println("name: ");
+        String name = getDecision();
+        System.out.print("age: ");
+        int age= getDecisionNumb();
+        in.nextLine();
+        System.out.print("is passive: ");
+        String isPassive =getDecision();
+        System.out.print("id: ");
+        String id=getDecision();
+        application.addMember1(name, age,isPassive,id);
+    }
+    public UserInterface() {
+    }
+
+    public String getDecision() {
+        decision = in.nextLine();
         return decision;
     }
-    public int getDecisionNumb(){
-        decisionNumb=in.nextInt();
+
+    public int getDecisionNumb() {
+        decisionNumb = in.nextInt();
         return decisionNumb;
     }
 
@@ -94,14 +122,14 @@ public class UserInterface {
                                 
                 Main menu:
                              
-                Save         [1]
-                Load         [2]
-                Subscription [3]
-                Top Five     [4]
-                Add          [5]
-                Remove       [6]
-                Display      [7]
-                Exit         [0]
+                Save         [1] kan bruges
+                Load         [2] kan ikke bruges
+                Subscription [3] kan ikke bruges
+                Top Five     [4] kan ikke bruges
+                Add          [5] kan bruges
+                Remove       [6] kan ikke bruges
+                Display      [7] kan bruges
+                Exit         [0] kan bruges
                 """);
     }
 }
