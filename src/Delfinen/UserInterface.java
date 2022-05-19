@@ -40,10 +40,10 @@ public class UserInterface {
             System.out.println(member);        }
     }
 
-    /*
+
     public void delete(){
         System.out.print("Enter Id of member you want to delete: ");
-        String id = in.nextLine();
+        int id = in.nextInt();
         boolean del = application.removeMember(id);
         if (del) {
             System.out.println("The member wiht Id " + id + " has been deleted");
@@ -53,7 +53,7 @@ public class UserInterface {
 
     }
 
-     */
+
 
     public void create (){
         System.out.println("create new member" );
@@ -132,7 +132,7 @@ public class UserInterface {
                 case 3 -> sub();
                 case 4 -> topFive();
                 case 5 -> create();
-                //case 6 -> delete();
+                case 6 -> delete();
                 case 7 -> list();
                 case 0 -> exit();
                 default -> System.out.println("unknown command");
