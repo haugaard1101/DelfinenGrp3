@@ -64,8 +64,6 @@ public class UserInterface {
         System.out.print("are you passive: ");
         boolean isPassive = getDecisionBoolean();
         application.addMember(dateOfBirth, name, isPassive);
-
-        list();
     }
     public UserInterface(DataBase application) {
         this.application = application;
