@@ -5,10 +5,12 @@ import java.util.Scanner;
 
 public class UserInterface {
 
+
+
     private Scanner in = new Scanner(System.in);
     private String decision;
     private int decisionNumb;
-    private final Log application;
+    private final DataBase application;
     private boolean decisionBoolean;
 
     public void save() throws FileNotFoundException {
@@ -38,6 +40,7 @@ public class UserInterface {
             System.out.println(member);        }
     }
 
+    /*
     public void delete(){
         System.out.print("Enter Id of member you want to delete: ");
         String id = in.nextLine();
@@ -50,22 +53,25 @@ public class UserInterface {
 
     }
 
-    public void create (){
+     */
+
+    public void create (Member member){
         System.out.println("create new member:" );
+        System.out.print("id: ");
+        application.idFailSafe();
+        in.nextLine(); //Scanner bug
         System.out.print("name: ");
         String name = getDecision();
-        System.out.print("age: ");
-        int age = getDecisionNumb();
-        in.nextLine();
-        System.out.print("is passive: ");
+        System.out.print("Date of birth: ");
+        String dateOfBirth = getDecision();
+        member.calcAge(); // problem
+        System.out.print("are you passive: ");
         boolean isPassive = getDecisionBoolean();
-        System.out.print("id: ");
-        String id = getDecision();
-        application.addMember(name, age, isPassive, id);
+        application.addMember(application.idFailSafe(), dateOfBirth, name, isPassive);
 
         list();
     }
-    public UserInterface(Log application) {
+    public UserInterface(DataBase application) {
         this.application = application;
     }
 
@@ -130,7 +136,7 @@ public class UserInterface {
                 case 3 -> sub();
                 case 4 -> topFive();
                 case 5 -> create();
-                case 6 -> delete();
+                //case 6 -> delete();
                 case 7 -> list();
                 case 0 -> exit();
                 default -> System.out.println("unknown command");

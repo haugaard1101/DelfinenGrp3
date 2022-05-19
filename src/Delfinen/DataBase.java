@@ -3,6 +3,8 @@ package Delfinen;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -10,12 +12,14 @@ import java.util.Scanner;
 public class DataBase {
     private ArrayList<Member> memberList;
 
+    private boolean iss = true;
+
     UserInterface ui = new UserInterface(this);
+
 
     void run() throws FileNotFoundException {
         ui.start();
         ui.switchMenu();
-
 
 
     }
@@ -25,16 +29,16 @@ public class DataBase {
     }
 
     public void writeMember(PrintStream out, Member member) {
+        out.print(member.getId());
+        out.print(";");
         out.print(member.getName());
         out.print(";");
-        out.print(member.getAge());
-        out.print(";");
-        out.print(member.getId());
+        out.print(member.getDateOfBirth());
         out.print(";");
         out.print(member.getIsPassive());
     }
 
-    public Iterable<Member> getAllMembers(){
+    public Iterable<Member> getAllMembers() {
         return memberList;
     }
 
@@ -59,12 +63,12 @@ public class DataBase {
             String line = in.nextLine();
             //linje scanner
             Scanner lineScanner = new Scanner(line).useDelimiter(";");
+            int id = lineScanner.nextInt();
             String name = lineScanner.next();
-            int age = lineScanner.nextInt();
-            String id = lineScanner.next();
+            String dateOfBirth = lineScanner.next();
             boolean isPassive = lineScanner.nextBoolean();
             //LocalDate dateOfBirth = lineScanner.next();
-            memberList.add(new Member(name, age, id, isPassive));
+            memberList.add(new Member(id, dateOfBirth, name, isPassive));
         }
         return memberList;
 
@@ -77,13 +81,29 @@ public class DataBase {
     }
 
 
-    public void addMember(String name, int age, boolean isPassive, String id){
-        Member member = new Member(name,age,id,isPassive);
+    public void addMember(int id, String name, String dateOfBirth, boolean isPassive) {
+        Member member = new Member(id, dateOfBirth, name, isPassive);
         memberList.add(member);
 
     }
 
+    public int idFailSafe() {
+        //int id = ui.getDecisionNumb();
+        while (iss) {
+            int id = ui.getDecisionNumb();
+            if (id <= 9999) {
+                iss = false;
+            } else {
+                System.out.println("Enter a number under 9999.");
+                System.out.print("id: ");
+            }
+        }
+        return 0;
+    }
 
+
+
+/*
     public boolean removeMember(String id) {
         Member member = findMemberById(id);
         if (member == null) {
@@ -94,15 +114,19 @@ public class DataBase {
         }
 
     }
-
-    private Member findMemberById(String id) {
+// har problem
+    private Member findMemberById(int id) {
         for (Member member : memberList) {
-            if (member.getId().equalsIgnoreCase(id)) {
+            if (member.getId()) {
                 return member;
             }
 
         }
         return null;
     }
+
+ */
+
+
 
 }

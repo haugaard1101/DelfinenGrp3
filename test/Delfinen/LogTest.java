@@ -11,7 +11,7 @@ class LogTest {
 
     @Test
     void loadMembers() throws FileNotFoundException {
-        Log log = new Log();
+        DataBase log = new DataBase();
         ArrayList<Member> testList = log.loadMembers();
         assertTrue(testList.size() == 1);
         assertEquals("kasper",testList.get(0).getName());
