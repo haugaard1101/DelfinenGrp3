@@ -9,7 +9,7 @@ public class UserInterface {
     private String decision;
     private int decisionNumb;
     private final Log application;
-
+    private boolean decisionBoolean;
 
     public void save() throws FileNotFoundException {
         application.saveMembers();
@@ -58,7 +58,7 @@ public class UserInterface {
         int age = getDecisionNumb();
         in.nextLine();
         System.out.print("is passive: ");
-        String isPassive = getDecision();
+        boolean isPassive = getDecisionBoolean();
         System.out.print("id: ");
         String id = getDecision();
         application.addMember(name, age, isPassive, id);
@@ -74,6 +74,10 @@ public class UserInterface {
         return decision;
     }
 
+    public boolean getDecisionBoolean(){
+        decisionBoolean = in.nextBoolean();
+        return decisionBoolean;
+    }
     public int getDecisionNumb() {
         decisionNumb = in.nextInt();
         return decisionNumb;
