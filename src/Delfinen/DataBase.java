@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 
-public class Log {
+public class DataBase {
     private ArrayList<Member> memberList;
 
     UserInterface ui = new UserInterface(this);
@@ -16,12 +16,11 @@ public class Log {
         ui.start();
         ui.switchMenu();
 
-        ui.exit();
 
 
     }
 
-    public Log() {
+    public DataBase() {
         memberList = new ArrayList<>();
     }
 
