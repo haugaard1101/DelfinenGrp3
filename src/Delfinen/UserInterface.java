@@ -8,7 +8,7 @@ public class UserInterface {
     private Scanner in = new Scanner(System.in);
     private String decision;
     private int decisionNumb;
-    private final Log application;
+    private final DataBase application;
 
 
     public void save() throws FileNotFoundException {
@@ -65,7 +65,7 @@ public class UserInterface {
 
         list();
     }
-    public UserInterface(Log application) {
+    public UserInterface(DataBase application) {
         this.application = application;
     }
 

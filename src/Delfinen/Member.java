@@ -53,7 +53,6 @@ public class Member {
 
     }
 
-
     public String getName() {
         return name;
     }
@@ -94,6 +93,10 @@ public class Member {
         return id;
     }
 
+    public int getAge(){
+        return age;
+    }
+
     public int calcAge() {
         LocalDate now = LocalDate.now();
         LocalDate date = LocalDate.of(2004, 5, 19);
@@ -101,6 +104,8 @@ public class Member {
         return (int)ChronoUnit.YEARS.between(dateOfBirth, LocalDate.now());
         //hvordan skal det skrives ind om det er fra scanner
     }
+
+
 
     @Override
     public String toString() {

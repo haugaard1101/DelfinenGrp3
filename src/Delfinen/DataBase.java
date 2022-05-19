@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 
-public class Log {
+public class DataBase {
     private ArrayList<Member> memberList;
 
     UserInterface ui = new UserInterface(this);
@@ -16,19 +16,18 @@ public class Log {
         ui.start();
         ui.switchMenu();
 
-        ui.exit();
 
 
     }
 
-    public Log() {
+    public DataBase() {
         memberList = new ArrayList<>();
     }
 
     public void writeMember(PrintStream out, Member member) {
         out.print(member.getName());
         out.print(";");
-        out.print(member.getDateOfBirth());
+        out.print(member.getAge());
         out.print(";");
         out.print(member.getId());
         out.print(";");
