@@ -102,9 +102,17 @@ public class DataBase {
     }
 
 
+    private Member findMemberById(int id) {
+        for (Member member : memberList) {
+            if (member.getId() == id) {
+                return member;
+            }
 
-/*
-    public boolean removeMember(String id) {
+        }
+        return null;
+    }
+
+    public boolean removeMember(int id) {
         Member member = findMemberById(id);
         if (member == null) {
             return false;
@@ -114,18 +122,10 @@ public class DataBase {
         }
 
     }
-// har problem
-    private Member findMemberById(int id) {
-        for (Member member : memberList) {
-            if (member.getId()) {
-                return member;
-            }
 
-        }
-        return null;
-    }
 
- */
+
+
 
 
 
