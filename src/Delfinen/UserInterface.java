@@ -1,5 +1,6 @@
 package Delfinen;
 
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -7,32 +8,65 @@ public class UserInterface {
     private Scanner in = new Scanner(System.in);
     private String decision;
     private int decisionNumb;
-    private Log application;
+    private final Log application;
 
-    public UserInterface (Log application){
-        this.application=application;
+
+    public void save() throws FileNotFoundException {
+        application.saveMembers();
     }
+
+    public void load() throws FileNotFoundException {
+        application.loadMembers();
+    }
+
+    public void sub(){
+        application.calcPayment();
+    }
+
+    public void topFive(){
+        application.topFive();
+    }
+/*
+    public void display(){
+        application.displayMember();
+    }
+
+ */
+
+    public void list(){
+        for (Member member : application.getAllMembers()){
+            System.out.println(member);        }
+    }
+
     public void delete(){
-        getDecision();
-        String id= in.nextLine();
-        boolean del=application.remove(id);
+        System.out.print("Enter Id of member you want to delete: ");
+        String id = in.nextLine();
+        boolean del = application.removeMember(id);
+        if (del) {
+            System.out.println("The member wiht Id " + id + " has been deleted");
+        } else {
+            System.out.println("The member with Id " + id + " dose not exist");
+        }
 
     }
 
     public void create (){
-        System.out.print("create new member:" );
-        System.out.println("name: ");
+        System.out.println("create new member:" );
+        System.out.print("name: ");
         String name = getDecision();
         System.out.print("age: ");
-        int age= getDecisionNumb();
+        int age = getDecisionNumb();
         in.nextLine();
         System.out.print("is passive: ");
-        String isPassive =getDecision();
+        String isPassive = getDecision();
         System.out.print("id: ");
-        String id=getDecision();
-        application.addMember1(name, age,isPassive,id);
+        String id = getDecision();
+        application.addMember(name, age, isPassive, id);
+
+        list();
     }
-    public UserInterface() {
+    public UserInterface(Log application) {
+        this.application = application;
     }
 
     public String getDecision() {
@@ -46,7 +80,7 @@ public class UserInterface {
     }
 
 
-    void start() {
+    public void start() {
         System.out.println("\n\t\t\t\t\t\t\t\t\t\t\tWELCOME TO: ");
         System.out.println("""
                  ____                                                    _      _           _       _                     \s
@@ -63,7 +97,7 @@ public class UserInterface {
                 """);
     }
 
-    void exit() {
+    public void exit() {
         System.out.println("""
                  ____                                                    _      _           _       _                     \s
                  / ___|  __   __   ____    _ __ ___    _ __ ___     ___  | | __ | |  _   _  | |__   | |__     ___   _ __   \s
@@ -80,43 +114,28 @@ public class UserInterface {
         System.exit(0);
     }
 
-    void invalidAnswer() {
-        System.out.println("\nyou entered an invalid answer!\n");
+    void switchMenu() throws FileNotFoundException {
+        Scanner in = new Scanner(System.in);
+        int choice = 50;
+        while (choice != 0) {
+            printMain();
+            choice = in.nextInt();
+            switch (choice) {
+                case 1 -> save();
+                case 2 -> load();
+                case 3 -> sub();
+                case 4 -> topFive();
+                case 5 -> create();
+                case 6 -> delete();
+                case 7 -> list();
+                case 0 -> exit();
+                default -> System.out.println("unknown command");
+            }
+        }
     }
 
-    public void nameText() {
-        System.out.print("Enter your name: ");
-    }
 
-    public void emailText() {
-        System.out.print("Enter your email: ");
-    }
-
-    public void phoneNumberText() {
-        System.out.print("Enter your phone number: ");
-    }
-
-    public void addressText() {
-        System.out.print("Enter your address");
-    }
-
-    public void dateOfBirthText() {
-        System.out.print("Enter your date of birth  (yyyy/mm/dd) : ");
-    }
-
-    public void paymentInfoText() {
-        System.out.print("Enter your payment info: ");
-    }
-
-    public void typeOfMemberText() {
-        System.out.print("Enter your type of member: ");
-    }
-
-    private void haveBennCompSwimText() {
-        System.out.print("Enter if your have been Comp Swim: ");
-    }
-
-    void printMain() {
+    public void printMain() {
 
         System.out.println("""
                                 
@@ -127,8 +146,8 @@ public class UserInterface {
                 Subscription [3] kan ikke bruges
                 Top Five     [4] kan ikke bruges
                 Add          [5] kan bruges
-                Remove       [6] kan ikke bruges
-                Display      [7] kan bruges
+                Delete       [6] kan bruges
+                List         [7] kan bruges
                 Exit         [0] kan bruges
                 """);
     }

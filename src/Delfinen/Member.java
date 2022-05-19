@@ -11,11 +11,12 @@ public class Member {
     private String paymentInfo;
     private String typeOfMember;
     private boolean haveBeenCompSwim;
-    private boolean isPassive;
+    private String isPassive;
     private String id;
     private LocalDate dateOfBirth;
+    private int age;
 
-
+/*
     Member(String name, int age, String email, int phoneNumber, String address, LocalDate dateOfBirth, String paymentInfo,
            String typeOfMember, boolean haveBeenCS, boolean isPassive, String id) {
         this.dateOfBirth = dateOfBirth;
@@ -30,6 +31,9 @@ public class Member {
         this.id = id;
     }
 
+ */
+
+    /*
     public Member(String name, LocalDate dateOfBirth) {
         this.name = name;
         this.dateOfBirth = dateOfBirth;
@@ -39,7 +43,13 @@ public class Member {
 
     }
 
+     */
+
     public Member(String name, int age, String id, String isPassive) {
+        this.name = name;
+        this.age = age;
+        this.id = id;
+        this.isPassive = isPassive;
 
     }
 
@@ -72,7 +82,7 @@ public class Member {
         return haveBeenCompSwim;
     }
 
-    public boolean getIsPassive() {
+    public String getIsPassive() {
         return isPassive;
     }
 
@@ -95,6 +105,8 @@ public class Member {
     @Override
     public String toString() {
         return
-                 name + " "+ " " + isPassive + " age " + dateOfBirth + " id "+ id;
+                 name + " " + isPassive + " age " + age + " id "+ id;
     }
+
+
 }

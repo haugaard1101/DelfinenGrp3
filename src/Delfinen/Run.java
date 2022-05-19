@@ -5,12 +5,11 @@ import java.util.Scanner;
 
 public class Run {
 
-    UserInterface ui = new UserInterface();
-    Log log = new Log();
+    /*
 
     void run() throws FileNotFoundException {
         ui.start();
-        switchMenu();
+        ui.switchMenu();
 
         ui.exit();
 
@@ -24,16 +23,20 @@ public class Run {
             ui.printMain();
             choice = in.nextInt();
             switch (choice) {
-                case 1 -> log.saveMembers();
-                case 2 -> log.loadMembers();
-                case 3 -> log.calcPayment();
-                case 4 -> log.topFive();
+                case 1 -> ui.save();
+                case 2 -> ui.load();
+                case 3 -> ui.sub();
+                case 4 -> ui.topFive();
                 case 5 -> ui.create();
                 case 6 -> ui.delete();
-                case 7 -> log.displayMember();
+                case 7 -> ui.display();
                 case 0 -> ui.exit();
                 default -> System.out.println("unknown command");
             }
         }
     }
+
+     */
 }
+
+

@@ -1,7 +1,7 @@
 package Delfinen;
 
 import java.time.LocalDate;
-
+/*
 public class CompititionSwimmer extends Member {
     private String disciplin;
     private String trainingResult;
@@ -29,3 +29,5 @@ public class CompititionSwimmer extends Member {
         return dateOfTraining;
     }
 }
+
+ */
