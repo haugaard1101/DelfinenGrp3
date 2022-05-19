@@ -60,10 +60,10 @@ public class DataBase {
             //linje scanner
             Scanner lineScanner = new Scanner(line).useDelimiter(";");
             String name = lineScanner.next();
-            String id = lineScanner.nextLine();
-            String isPassive = lineScanner.nextLine();
             int age = lineScanner.nextInt();
-            //LocalDate dateOfBirth = lineScanner.nextLine();
+            String id = lineScanner.next();
+            boolean isPassive = lineScanner.nextBoolean();
+            //LocalDate dateOfBirth = lineScanner.next();
             memberList.add(new Member(name, age, id, isPassive));
         }
         return memberList;
@@ -77,7 +77,7 @@ public class DataBase {
     }
 
 
-    public void addMember(String name, int age, String isPassive, String id){
+    public void addMember(String name, int age, boolean isPassive, String id){
         Member member = new Member(name,age,id,isPassive);
         memberList.add(member);
 
