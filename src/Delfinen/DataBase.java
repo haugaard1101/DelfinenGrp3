@@ -3,8 +3,6 @@ package Delfinen;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
-import java.time.LocalDate;
-import java.time.Period;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -12,7 +10,7 @@ import java.util.Scanner;
 public class DataBase {
     private ArrayList<Member> memberList;
 
-    private boolean iss = true;
+    private boolean keepGoing = true;
 
     UserInterface ui = new UserInterface(this);
 
@@ -20,8 +18,6 @@ public class DataBase {
     void run() throws FileNotFoundException {
         ui.start();
         ui.switchMenu();
-
-
     }
 
     public DataBase() {
@@ -44,8 +40,6 @@ public class DataBase {
 
 
     public void calcPayment() {
-
-
     }
 
     public void saveMembers() throws FileNotFoundException {
@@ -60,14 +54,12 @@ public class DataBase {
     public ArrayList<Member> loadMembers() throws FileNotFoundException {
         Scanner in = new Scanner(new File("MemberFile.csv"));
         while (in.hasNextLine()) {
-            String line = in.nextLine();
-            //linje scanner
+            String line = in.nextLine(); //linje scanner
             Scanner lineScanner = new Scanner(line).useDelimiter(";");
             int id = lineScanner.nextInt();
             String name = lineScanner.next();
             String dateOfBirth = lineScanner.next();
             boolean isPassive = lineScanner.nextBoolean();
-            //LocalDate dateOfBirth = lineScanner.next();
             memberList.add(new Member(id, dateOfBirth, name, isPassive));
         }
         return memberList;
@@ -82,17 +74,17 @@ public class DataBase {
 
 
     public void addMember(String name, String dateOfBirth, boolean isPassive) {
-        int id = memberList.size()+1;
+        int id = memberList.size() + 1;
         Member member = new Member(id, dateOfBirth, name, isPassive);
         memberList.add(member);
     }
 
-    public int idFailSafe() {
-        //int id = ui.getDecisionNumb();
-        while (iss) {
-            int id = ui.getDecisionNumb();
-            if (id <= 9999) {
-                iss = false;
+
+    public int nameFailSafe() {
+        while (keepGoing) {
+            String name = ui.getDecision();
+            if (name) {
+                keepGoing = false;
             } else {
                 System.out.println("Enter a number under 9999.");
                 System.out.print("id: ");
@@ -100,6 +92,7 @@ public class DataBase {
         }
         return 0;
     }
+
 
 
     private Member findMemberById(int id) {
@@ -122,11 +115,6 @@ public class DataBase {
         }
 
     }
-
-
-
-
-
 
 
 }

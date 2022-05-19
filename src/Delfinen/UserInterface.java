@@ -1,10 +1,10 @@
 package Delfinen;
 
 import java.io.FileNotFoundException;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class UserInterface {
-
 
 
     private Scanner in = new Scanner(System.in);
@@ -21,11 +21,11 @@ public class UserInterface {
         application.loadMembers();
     }
 
-    public void sub(){
+    public void sub() {
         application.calcPayment();
     }
 
-    public void topFive(){
+    public void topFive() {
         application.topFive();
     }
 /*
@@ -35,13 +35,14 @@ public class UserInterface {
 
  */
 
-    public void list(){
-        for (Member member : application.getAllMembers()){
-            System.out.println(member);        }
+    public void list() {
+        for (Member member : application.getAllMembers()) {
+            System.out.println(member);
+        }
     }
 
 
-    public void delete(){
+    public void delete() {
         System.out.print("Enter Id of member you want to delete: ");
         int id = in.nextInt();
         boolean del = application.removeMember(id);
@@ -54,9 +55,8 @@ public class UserInterface {
     }
 
 
-
-    public void create (){
-        System.out.println("create new member" );
+    public void create() {
+        System.out.println("create new member");
         System.out.print("name: ");
         String name = getDecision();
         System.out.print("Date of birth: ");
@@ -65,19 +65,22 @@ public class UserInterface {
         boolean isPassive = getDecisionBoolean();
         application.addMember(dateOfBirth, name, isPassive);
     }
+
     public UserInterface(DataBase application) {
         this.application = application;
     }
 
     public String getDecision() {
         decision = in.nextLine();
+        decision = decision.toLowerCase();
         return decision;
     }
 
-    public boolean getDecisionBoolean(){
+    public boolean getDecisionBoolean() {
         decisionBoolean = in.nextBoolean();
         return decisionBoolean;
     }
+
     public int getDecisionNumb() {
         decisionNumb = in.nextInt();
         return decisionNumb;
