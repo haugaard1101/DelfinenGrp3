@@ -55,19 +55,15 @@ public class UserInterface {
 
      */
 
-    public void create (Member member){
-        System.out.println("create new member:" );
-        System.out.print("id: ");
-        application.idFailSafe();
-        in.nextLine(); //Scanner bug
+    public void create (){
+        System.out.println("create new member" );
         System.out.print("name: ");
         String name = getDecision();
         System.out.print("Date of birth: ");
         String dateOfBirth = getDecision();
-        member.calcAge(); // problem
         System.out.print("are you passive: ");
         boolean isPassive = getDecisionBoolean();
-        application.addMember(application.idFailSafe(), dateOfBirth, name, isPassive);
+        application.addMember(dateOfBirth, name, isPassive);
 
         list();
     }

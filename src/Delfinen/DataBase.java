@@ -81,10 +81,10 @@ public class DataBase {
     }
 
 
-    public void addMember(int id, String name, String dateOfBirth, boolean isPassive) {
+    public void addMember(String name, String dateOfBirth, boolean isPassive) {
+        int id = memberList.size()+1;
         Member member = new Member(id, dateOfBirth, name, isPassive);
         memberList.add(member);
-
     }
 
     public int idFailSafe() {
