@@ -97,7 +97,7 @@ public class Member {
     @Override
     public String toString() {
         return
-                 name + " " + isPassive + " age " + age + " id "+ id;
+                 id + " :ID " + name + " :Name " + dateOfBirth + " :Date of birth ";
     }
 
 
