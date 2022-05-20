@@ -32,6 +32,7 @@ public class DataBase {
         out.print(member.getDateOfBirth());
         out.print(";");
         out.print(member.getIsPassive());
+        out.println();
     }
 
     public Iterable<Member> getAllMembers() {

@@ -47,7 +47,7 @@ public class UserInterface {
         int id = in.nextInt();
         boolean del = application.removeMember(id);
         if (del) {
-            System.out.println("The member wiht Id " + id + " has been deleted");
+            System.out.println("The member with Id " + id + " has been deleted");
         } else {
             System.out.println("The member with Id " + id + " dose not exist");
         }
@@ -122,10 +122,11 @@ public class UserInterface {
     }
 
     void switchMenu() throws FileNotFoundException {
+        Scanner in = new Scanner(System.in);
         int choice = 50;
         while (choice != 0) {
             printMain();
-            choice = getDecisionNumb();
+            choice = in.nextInt();
             switch (choice) {
                 case 1 -> save();
                 case 2 -> load();
