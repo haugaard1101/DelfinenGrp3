@@ -10,6 +10,7 @@ public class Member {
     private LocalDate dateOfBirth;
 
 
+
     public Member(int id, String name, String dateOfBirth, boolean isPassive) {
         this.name = name;
         this.id = id;
@@ -40,10 +41,28 @@ public class Member {
 
     }
 
+    public int calcPayment(){
+        int payment = 0;
+        int age = calcAge();
+            if (isPassive)
+                payment = 500;
+            else if (age < 18)
+                payment = 1000;
+            else if (age >= 18 && age <= 60)
+                payment = 1600;
+            else if (age > 60)
+                payment = 1200;
+            else {
+                System.out.println("something");
+            }
+            return payment;
+        }
+
+
     @Override
     public String toString() {
         return
-                id + " :ID " + name + " :Name " + dateOfBirth + " :Date of birth ";
+                "ID: " + id +  " Name: " + name + " Date of birth: " + dateOfBirth + " State: " + isPassive ;
     }
 
 

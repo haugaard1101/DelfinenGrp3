@@ -15,6 +15,7 @@ public class DataBase {
     UserInterface ui = new UserInterface(this);
 
 
+
     void run() throws FileNotFoundException {
         ui.start();
         ui.switchMenu();
@@ -40,8 +41,6 @@ public class DataBase {
     }
 
 
-    public void calcPayment() {
-    }
 
     public void saveMembers() throws FileNotFoundException {
         PrintStream out = new PrintStream("MemberFile.csv");
@@ -68,6 +67,14 @@ public class DataBase {
 
     }
 
+    public int calcTotalPayment() {
+        int total = 0;
+        for (Member member : memberList) {
+           total += member.calcPayment();
+        }
+        return total;
+    }
+
 
     public void topFive() {
 
@@ -80,21 +87,40 @@ public class DataBase {
         memberList.add(member);
     }
 
-/*
-    public int nameFailSafe() {
+
+    public boolean passiveFailSafe() {
+        boolean state = true;
         while (keepGoing) {
-            String name = ui.getDecision();
-            if (name) {
+            String passiveState = ui.getDecision();
+            if (passiveState.equals("false")) {
+               state = false;
+               keepGoing = false;
+            } else if (passiveState.equals("true")){
                 keepGoing = false;
-            } else {
-                System.out.println("Enter a number under 9999.");
-                System.out.print("id: ");
+            }else{
+                System.out.println("Typo (true or false)");
             }
         }
-        return 0;
+        return state;
     }
 
- */
+    public String nameFailSafe() {
+        String trueName = "";
+        while (keepGoing) {
+            String typedName = ui.getDecision();
+            for (int i = 0; i < typedName.length(); i++) {
+                if (typedName.charAt(i) < 'a' || typedName.charAt(i) > 'z') {
+                    System.out.println("Contains illegal character. Try again.");
+                } else {
+                    keepGoing = false;
+                    typedName = trueName;
+                }
+
+            }
+
+        }
+        return trueName;
+    }
 
 
 

@@ -21,10 +21,6 @@ public class UserInterface {
         application.loadMembers();
     }
 
-    public void sub() {
-        application.calcPayment();
-    }
-
     public void topFive() {
         application.topFive();
     }
@@ -58,12 +54,17 @@ public class UserInterface {
     public void create() {
         System.out.println("create new member");
         System.out.print("name: ");
-        String name = getDecision();
+        String name = application.nameFailSafe();
         System.out.print("Date of birth(yyyy-mm-dd): ");
         String dateOfBirth = getDecision();
         System.out.print("are you passive: ");
-        boolean isPassive = getDecisionBoolean();
+        boolean isPassive = application.passiveFailSafe();
         application.addMember(name, dateOfBirth, isPassive);
+    }
+
+    public void subscription() {
+
+        System.out.println("The total payment: " + application.calcTotalPayment());
     }
 
     public UserInterface(DataBase application) {
@@ -71,7 +72,7 @@ public class UserInterface {
     }
 
     public String getDecision() {
-        decision = in.nextLine();
+        decision = in.next();
         decision = decision.toLowerCase();
         return decision;
     }
@@ -127,10 +128,11 @@ public class UserInterface {
         while (choice != 0) {
             printMain();
             choice = in.nextInt();
+            in.nextLine();
             switch (choice) {
                 case 1 -> save();
                 case 2 -> load();
-                case 3 -> sub();
+                case 3 -> subscription();
                 case 4 -> topFive();
                 case 5 -> create();
                 case 6 -> delete();
@@ -150,7 +152,7 @@ public class UserInterface {
                              
                 Save         [1] kan bruges
                 Load         [2] kan bruges
-                Subscription [3] kan ikke bruges
+                Subscription [3] kan bruges
                 Top Five     [4] kan ikke bruges
                 Add          [5] kan bruges
                 Delete       [6] kan bruges
