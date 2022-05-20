@@ -57,7 +57,6 @@ public class DataBase {
             String line = in.nextLine(); //linje scanner
             Scanner lineScanner = new Scanner(line).useDelimiter(";");
             int id = lineScanner.nextInt();
-            //in.next(); //Scanner bug
             String name = lineScanner.next();
             String dateOfBirth = lineScanner.next();
             boolean isPassive = lineScanner.nextBoolean();

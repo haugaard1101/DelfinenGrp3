@@ -59,11 +59,11 @@ public class UserInterface {
         System.out.println("create new member");
         System.out.print("name: ");
         String name = getDecision();
-        System.out.print("Date of birth: ");
+        System.out.print("Date of birth(yyyy-mm-dd): ");
         String dateOfBirth = getDecision();
         System.out.print("are you passive: ");
         boolean isPassive = getDecisionBoolean();
-        application.addMember(dateOfBirth, name, isPassive);
+        application.addMember(name, dateOfBirth, isPassive);
     }
 
     public UserInterface(DataBase application) {
@@ -122,11 +122,10 @@ public class UserInterface {
     }
 
     void switchMenu() throws FileNotFoundException {
-        Scanner in = new Scanner(System.in);
         int choice = 50;
         while (choice != 0) {
             printMain();
-            choice = in.nextInt();
+            choice = getDecisionNumb();
             switch (choice) {
                 case 1 -> save();
                 case 2 -> load();
@@ -149,7 +148,7 @@ public class UserInterface {
                 Main menu:
                              
                 Save         [1] kan bruges
-                Load         [2] kan ikke bruges
+                Load         [2] kan bruges
                 Subscription [3] kan ikke bruges
                 Top Five     [4] kan ikke bruges
                 Add          [5] kan bruges
