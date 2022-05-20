@@ -57,10 +57,11 @@ public class DataBase {
             String line = in.nextLine(); //linje scanner
             Scanner lineScanner = new Scanner(line).useDelimiter(";");
             int id = lineScanner.nextInt();
+            //in.next(); //Scanner bug
             String name = lineScanner.next();
             String dateOfBirth = lineScanner.next();
             boolean isPassive = lineScanner.nextBoolean();
-            memberList.add(new Member(id, dateOfBirth, name, isPassive));
+            memberList.add(new Member(id, name, dateOfBirth, isPassive));
         }
         return memberList;
 
@@ -75,11 +76,11 @@ public class DataBase {
 
     public void addMember(String name, String dateOfBirth, boolean isPassive) {
         int id = memberList.size() + 1;
-        Member member = new Member(id, dateOfBirth, name, isPassive);
+        Member member = new Member(id, name, dateOfBirth, isPassive);
         memberList.add(member);
     }
 
-
+/*
     public int nameFailSafe() {
         while (keepGoing) {
             String name = ui.getDecision();
@@ -92,6 +93,8 @@ public class DataBase {
         }
         return 0;
     }
+
+ */
 
 
 
@@ -115,6 +118,5 @@ public class DataBase {
         }
 
     }
-
 
 }
