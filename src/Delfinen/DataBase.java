@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 
 public class DataBase {
+
     private ArrayList<Member> memberList;
 
     private boolean keepGoing = true;
@@ -88,9 +89,10 @@ public class DataBase {
     }
 
 
-    public boolean passiveFailSafe() {
+    public boolean passiveFailSafe() { //TODO kan ikke skrives, kommer ud som true.
         boolean state = true;
         while (keepGoing) {
+            ui.getDecision();
             String passiveState = ui.getDecision();
             if (passiveState.equals("false")) {
                state = false;
@@ -109,7 +111,8 @@ public class DataBase {
         while (keepGoing) {
             String typedName = ui.getDecision();
             for (int i = 0; i < typedName.length(); i++) {
-                if (typedName.charAt(i) < 'a' || typedName.charAt(i) > 'z') {
+                if (typedName.charAt(i) < 'a' || typedName.charAt(i) > 'z')  { //TODO kan stadig tage numre med tekst (Tobias1).
+                    //TODO Skal nok også have typedName.charAt(i) < 'A' || typedName.charAt(i) > 'Z' && typedName.charAt(i) > ' '
                     System.out.println("Contains illegal character. Try again.");
                 } else {
                     keepGoing = false;
@@ -122,6 +125,11 @@ public class DataBase {
         return trueName;
     }
 
+    //TODO "Save" skal kunne ligge oven i det vi allerede har i vores "file",
+    // kan gøres ved at når man starter så loader den automatisk eller nå vi "save" loader den først.
+
+    //TODO skal kunne skifte mellem aktiv og passiv
+    //TODO skal have en failSafeDateOfBirth
 
 
     private Member findMemberById(int id) {

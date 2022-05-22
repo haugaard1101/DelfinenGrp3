@@ -62,7 +62,7 @@ public class Member {
     @Override
     public String toString() {
         return
-                "ID: " + id +  " Name: " + name + " Date of birth: " + dateOfBirth + " State: " + isPassive ;
+                "ID: " + id +  " Name: " + name + " Date of birth: " + dateOfBirth + " State: " + isPassive ; // TODO skal ændre navn på "state".
     }
 
 

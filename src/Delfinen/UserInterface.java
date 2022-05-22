@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class UserInterface {
 
 
-    private Scanner in = new Scanner(System.in);
+    private final Scanner in = new Scanner(System.in);
     private String decision;
     private int decisionNumb;
     private final DataBase application;
@@ -57,7 +57,7 @@ public class UserInterface {
         String name = application.nameFailSafe();
         System.out.print("Date of birth(yyyy-mm-dd): ");
         String dateOfBirth = getDecision();
-        System.out.print("are you passive: ");
+        System.out.print("are you passive: "); // TODO skal udskrive noget andet end "are you passive"
         boolean isPassive = application.passiveFailSafe();
         application.addMember(name, dateOfBirth, isPassive);
     }
