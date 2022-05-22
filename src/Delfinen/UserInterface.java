@@ -55,7 +55,7 @@ public class UserInterface {
         System.out.println("create new member");
         System.out.print("name: ");
         String name = application.nameFailSafe();
-        System.out.print("Date of birth(yyyy-mm-dd): ");
+        System.out.print("Date of birth(yyyy-mm-dd): "); //Mangler failsafe
         String dateOfBirth = getDecision();
         System.out.print("are you passive: "); // TODO skal udskrive noget andet end "are you passive"
         boolean isPassive = application.passiveFailSafe();
