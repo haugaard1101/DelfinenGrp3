@@ -107,14 +107,17 @@ public class DataBase {
     }
 
     public String nameFailSafe() {
-        String trueName = "";
+        //String trueName = "";
         keepGoing=true;
+        String typedName = "";
         while (keepGoing) {
-            String typedName = ui.getDecision();
+            typedName = ui.getDecision();
             System.out.println(typedName);
 
+            boolean keep = true;
             for (int i = 0; i < typedName.length(); i++) { /// TODO JESSICA !!!
                 System.out.println(typedName.charAt(i));
+
                 if (!((typedName.charAt(i) >= 'a' && typedName.charAt(i) <= 'z')))
                         //     ||
                   //      ((typedName.charAt(i) >= 'A' && typedName.charAt(i) <= 'Z')) ||
@@ -125,16 +128,20 @@ public class DataBase {
                     System.out.println("Contains illegal character. Try again.");
 
                     //TODO kan stadig tage numre med tekst (Tobias1).
+
                     //TODO Skal nok også have typedName.charAt(i) < 'A' || typedName.charAt(i) > 'Z' && typedName.charAt(i) > ' '
                 } else {
-                    keepGoing = false;
-                    typedName = trueName;
+                    keep = false;
+
                 }
 
             }
-
+            if(keep){
+                keepGoing = false;
+            }
+            //trueName = typedName;
         }
-        return trueName;
+        return typedName;
     }
 
     //TODO "Save" skal kunne ligge oven i det vi allerede har i vores "file",

@@ -7,10 +7,10 @@ public class CompititionSwimmer extends Member {
     private String trainingResult;
     private int dateOfTraining;
 
-    CompititionSwimmer(int age, String name, String email, int phoneNumber, String address, LocalDate dateOfBirth, String paymentInfo,
-                       String typeOfMember, boolean haveBeenCS, boolean isPassive, String disciplin,
-                       String trainingResult, int dateOfTraining, String id) {
-        super(name, age, email, phoneNumber, address,dateOfBirth, paymentInfo, typeOfMember, haveBeenCS, isPassive,id);
+    CompititionSwimmer(String name, LocalDate dateOfBirth, boolean isPassive,int id,String disciplin,
+                       String trainingResult, int dateOfTrainin
+    ) {
+        super(name,dateOfBirth, haveBeenCS, isPassive,id);
         this.disciplin = disciplin;
         this.trainingResult = trainingResult;
         this.dateOfTraining = dateOfTraining;
@@ -31,3 +31,5 @@ public class CompititionSwimmer extends Member {
 }
 
  */
+
+
