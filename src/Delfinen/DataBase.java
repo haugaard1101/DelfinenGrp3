@@ -16,7 +16,6 @@ public class DataBase {
     UserInterface ui = new UserInterface(this);
 
 
-
     void run() throws FileNotFoundException {
         ui.start();
         ui.switchMenu();
@@ -40,7 +39,6 @@ public class DataBase {
     public Iterable<Member> getAllMembers() {
         return memberList;
     }
-
 
 
     public void saveMembers() throws FileNotFoundException {
@@ -71,7 +69,7 @@ public class DataBase {
     public int calcTotalPayment() {
         int total = 0;
         for (Member member : memberList) {
-           total += member.calcPayment();
+            total += member.calcPayment();
         }
         return total;
     }
@@ -91,15 +89,17 @@ public class DataBase {
 
     public boolean passiveFailSafe() { //TODO kan ikke skrives, kommer ud som true.
         boolean state = true;
+        keepGoing = true;
         while (keepGoing) {
-            ui.getDecision();
+
             String passiveState = ui.getDecision();
+
             if (passiveState.equals("false")) {
-               state = false;
-               keepGoing = false;
-            } else if (passiveState.equals("true")){
+                state = false;
                 keepGoing = false;
-            }else{
+            } else if (passiveState.equals("true")) {
+                keepGoing = false;
+            } else {
                 System.out.println("Typo (true or false)");
             }
         }
@@ -108,12 +108,24 @@ public class DataBase {
 
     public String nameFailSafe() {
         String trueName = "";
+        keepGoing=true;
         while (keepGoing) {
             String typedName = ui.getDecision();
-            for (int i = 0; i < typedName.length(); i++) {
-                if (typedName.charAt(i) < 'a' || typedName.charAt(i) > 'z')  { //TODO kan stadig tage numre med tekst (Tobias1).
-                    //TODO Skal nok også have typedName.charAt(i) < 'A' || typedName.charAt(i) > 'Z' && typedName.charAt(i) > ' '
+            System.out.println(typedName);
+
+            for (int i = 0; i < typedName.length(); i++) { /// TODO JESSICA !!!
+                System.out.println(typedName.charAt(i));
+                if (!((typedName.charAt(i) >= 'a' && typedName.charAt(i) <= 'z')))
+                        //     ||
+                  //      ((typedName.charAt(i) >= 'A' && typedName.charAt(i) <= 'Z')) ||
+                    //    (typedName.charAt(i) == ' ')))
+                    //
+                    {
+
                     System.out.println("Contains illegal character. Try again.");
+
+                    //TODO kan stadig tage numre med tekst (Tobias1).
+                    //TODO Skal nok også have typedName.charAt(i) < 'A' || typedName.charAt(i) > 'Z' && typedName.charAt(i) > ' '
                 } else {
                     keepGoing = false;
                     typedName = trueName;

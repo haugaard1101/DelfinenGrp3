@@ -59,6 +59,7 @@ public class UserInterface {
         String dateOfBirth = getDecision();
         System.out.print("are you passive: "); // TODO skal udskrive noget andet end "are you passive"
         boolean isPassive = application.passiveFailSafe();
+
         application.addMember(name, dateOfBirth, isPassive);
     }
 
@@ -73,7 +74,7 @@ public class UserInterface {
 
     public String getDecision() {
         decision = in.next();
-        decision = decision.toLowerCase();
+        //decision = decision.toLowerCase();
         return decision;
     }
 
@@ -160,4 +161,5 @@ public class UserInterface {
                 Exit         [0] kan bruges
                 """);
     }
+    
 }
