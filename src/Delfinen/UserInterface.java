@@ -56,7 +56,7 @@ public class UserInterface {
         System.out.print("name: ");
         String name = application.nameFailSafe();
         System.out.print("Date of birth(yyyy-mm-dd): "); //Mangler failsafe
-        String dateOfBirth = getDecision();
+        String dateOfBirth = application.failSafeDateOfBirth();
         System.out.print("are you passive: "); // TODO skal udskrive noget andet end "are you passive"
         boolean isPassive = application.passiveFailSafe();
 
@@ -132,12 +132,11 @@ public class UserInterface {
             in.nextLine();
             switch (choice) {
                 case 1 -> save();
-                case 2 -> load();
-                case 3 -> subscription();
-                case 4 -> topFive();
-                case 5 -> create();
-                case 6 -> delete();
-                case 7 -> list();
+                case 2 -> subscription();
+                case 3 -> topFive();
+                case 4 -> create();
+                case 5 -> delete();
+                case 6 -> list();
                 case 0 -> exit();
                 default -> System.out.println("unknown command");
             }
@@ -152,12 +151,11 @@ public class UserInterface {
                 Main menu:
                              
                 Save         [1] kan bruges
-                Load         [2] kan bruges
-                Subscription [3] kan bruges
-                Top Five     [4] kan ikke bruges
-                Add          [5] kan bruges
-                Delete       [6] kan bruges
-                List         [7] kan bruges
+                Subscription [2] kan bruges
+                Top Five     [3] kan ikke bruges
+                Add          [4] kan bruges
+                Delete       [5] kan bruges
+                List         [6] kan bruges
                 Exit         [0] kan bruges
                 """);
     }

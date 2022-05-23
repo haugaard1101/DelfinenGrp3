@@ -18,6 +18,7 @@ public class DataBase {
 
     void run() throws FileNotFoundException {
         ui.start();
+        ui.load();
         ui.switchMenu();
     }
 
@@ -86,6 +87,14 @@ public class DataBase {
         memberList.add(member);
     }
 
+    public boolean passiveActiveChange() {
+        String change= ui.getDecision();
+
+       // memberList;
+        //TODO
+
+        return false;
+    }
 
     public boolean passiveFailSafe() { //TODO kan ikke skrives, kommer ud som true.
         boolean state = true;
@@ -107,23 +116,19 @@ public class DataBase {
     }
 
     public String nameFailSafe() {
-        //String trueName = "";
-        keepGoing=true;
+        keepGoing = true;
         String typedName = "";
         while (keepGoing) {
             typedName = ui.getDecision();
             System.out.println(typedName);
 
             boolean keep = true;
-            for (int i = 0; i < typedName.length(); i++) { /// TODO JESSICA !!!
+            for (int i = 0; i < typedName.length(); i++) { /// TODO JESSICA !!! kig på tabel.
                 System.out.println(typedName.charAt(i));
 
-                if (!((typedName.charAt(i) >= 'a' && typedName.charAt(i) <= 'z')))
-                        //     ||
-                  //      ((typedName.charAt(i) >= 'A' && typedName.charAt(i) <= 'Z')) ||
-                    //    (typedName.charAt(i) == ' ')))
-                    //
-                    {
+                if (!(typedName.charAt(i) >= 'a' && typedName.charAt(i) <= 'z')
+                        &&
+                        typedName.charAt(i) >= 'A' && typedName.charAt(i) <= 'Z' && typedName.charAt(i) == ' ') {
 
                     System.out.println("Contains illegal character. Try again.");
 
@@ -136,19 +141,44 @@ public class DataBase {
                 }
 
             }
-            if(keep){
+            if (!keep) {
                 keepGoing = false;
             }
-            //trueName = typedName;
         }
         return typedName;
     }
 
-    //TODO "Save" skal kunne ligge oven i det vi allerede har i vores "file",
-    // kan gøres ved at når man starter så loader den automatisk eller nå vi "save" loader den først.
+
+    public String failSafeDateOfBirth() {
+        keepGoing = true;
+        String typedDateOfBirth = "";
+        while (keepGoing) {
+            typedDateOfBirth = ui.getDecision();
+            boolean keep = true;
+            if (typedDateOfBirth.length() == 10) {
+                for (int i = 0; i < typedDateOfBirth.length(); i++) {
+                    if ((typedDateOfBirth.charAt(i) >= '0' && typedDateOfBirth.charAt(i) <= '9' && typedDateOfBirth.charAt(i) == '-')) {
+                        System.out.println("Contains illegal character. Try again.");
+                    } else {
+                        keep = false;
+                    }
+                    if (!keep) {
+                        keepGoing = false;
+                    }
+                }
+            } else if (typedDateOfBirth.length() > 10) {
+                System.out.println("Contains more than 10 characters. Try again.");
+            } else {
+                System.out.println("Contains less than 10 characters. Try again.");
+
+            }
+
+        }
+        return typedDateOfBirth;
+    }
+
 
     //TODO skal kunne skifte mellem aktiv og passiv
-    //TODO skal have en failSafeDateOfBirth
 
 
     private Member findMemberById(int id) {
