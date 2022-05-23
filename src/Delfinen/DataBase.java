@@ -10,11 +10,10 @@ import java.util.Scanner;
 public class DataBase {
 
     private ArrayList<Member> memberList;
-
     private boolean keepGoing = true;
-
     UserInterface ui = new UserInterface(this);
 
+    //TODO compitionSwimmer har højeste prioritet for hvad der skal laves samt topFive
 
     void run() throws FileNotFoundException {
         ui.start();
@@ -37,10 +36,9 @@ public class DataBase {
         out.println();
     }
 
-    public Iterable<Member> getAllMembers() {
+    public Iterable<Member> getAllMembers() { //TODO skal spørge om hvad "Iterable" er.
         return memberList;
     }
-
 
     public void saveMembers() throws FileNotFoundException {
         PrintStream out = new PrintStream("MemberFile.csv");
@@ -49,7 +47,6 @@ public class DataBase {
 
         }
     }
-
 
     public ArrayList<Member> loadMembers() throws FileNotFoundException {
         Scanner in = new Scanner(new File("MemberFile.csv"));
@@ -75,11 +72,9 @@ public class DataBase {
         return total;
     }
 
-
-    public void topFive() {
+    public void topFive() { //TODO har højeste prioritet for hvad der skal laves
 
     }
-
 
     public void addMember(String name, String dateOfBirth, boolean isPassive) {
         int id = memberList.size() + 1;
@@ -87,7 +82,7 @@ public class DataBase {
         memberList.add(member);
     }
 
-    public boolean passiveActiveChange() {
+    public boolean passiveActiveChange() { //TODO skal kunne skifte mellem aktiv og passiv
         String change= ui.getDecision();
 
        // memberList;
@@ -96,13 +91,11 @@ public class DataBase {
         return false;
     }
 
-    public boolean passiveFailSafe() { //TODO kan ikke skrives, kommer ud som true.
+    public boolean passiveFailSafe() {
         boolean state = true;
         keepGoing = true;
         while (keepGoing) {
-
             String passiveState = ui.getDecision();
-
             if (passiveState.equals("false")) {
                 state = false;
                 keepGoing = false;
@@ -121,25 +114,19 @@ public class DataBase {
         while (keepGoing) {
             typedName = ui.getDecision();
             System.out.println(typedName);
-
             boolean keep = true;
-            for (int i = 0; i < typedName.length(); i++) { /// TODO JESSICA !!! kig på tabel.
+            for (int i = 0; i < typedName.length(); i++) {
                 System.out.println(typedName.charAt(i));
-
-                if (!(typedName.charAt(i) >= 'a' && typedName.charAt(i) <= 'z')
+                if (!(typedName.charAt(i) >= 'a' && typedName.charAt(i) <= 'z')// TODO JESSICA !!! kig på ascii tabel.
                         &&
                         typedName.charAt(i) >= 'A' && typedName.charAt(i) <= 'Z' && typedName.charAt(i) == ' ') {
 
                     System.out.println("Contains illegal character. Try again.");
 
-                    //TODO kan stadig tage numre med tekst (Tobias1).
-
                     //TODO Skal nok også have typedName.charAt(i) < 'A' || typedName.charAt(i) > 'Z' && typedName.charAt(i) > ' '
                 } else {
                     keep = false;
-
                 }
-
             }
             if (!keep) {
                 keepGoing = false;
@@ -148,8 +135,7 @@ public class DataBase {
         return typedName;
     }
 
-
-    public String failSafeDateOfBirth() {
+    public String dateOfBirthFailSafe() {
         keepGoing = true;
         String typedDateOfBirth = "";
         while (keepGoing) {
@@ -176,10 +162,6 @@ public class DataBase {
         }
         return typedDateOfBirth;
     }
-
-
-    //TODO skal kunne skifte mellem aktiv og passiv
-
 
     private Member findMemberById(int id) {
         for (Member member : memberList) {

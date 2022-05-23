@@ -1,7 +1,6 @@
 package Delfinen;
 
 import java.io.FileNotFoundException;
-import java.util.Locale;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -13,30 +12,26 @@ public class UserInterface {
     private final DataBase application;
     private boolean decisionBoolean;
 
-    public void save() throws FileNotFoundException {
+    public void save() throws FileNotFoundException { //TODO skal udskrive noget relevant tekst
+        System.out.println("something");
         application.saveMembers();
     }
 
-    public void load() throws FileNotFoundException {
+    public void load() throws FileNotFoundException { //TODO skal udskrive noget relevant tekst
+        System.out.println("something");
         application.loadMembers();
     }
 
-    public void topFive() {
+    public void topFive() { //TODO skal udskrive noget relevant tekst
+        System.out.println("something");
         application.topFive();
     }
-/*
-    public void display(){
-        application.displayMember();
-    }
 
- */
-
-    public void list() {
+    public void list() { //TODO kan have en tekst, men er ikke en prioritet
         for (Member member : application.getAllMembers()) {
             System.out.println(member);
         }
     }
-
 
     public void delete() {
         System.out.print("Enter Id of member you want to delete: ");
@@ -50,13 +45,12 @@ public class UserInterface {
 
     }
 
-
     public void create() {
         System.out.println("create new member");
         System.out.print("name: ");
         String name = application.nameFailSafe();
         System.out.print("Date of birth(yyyy-mm-dd): "); //Mangler failsafe
-        String dateOfBirth = application.failSafeDateOfBirth();
+        String dateOfBirth = application.dateOfBirthFailSafe();
         System.out.print("are you passive: "); // TODO skal udskrive noget andet end "are you passive"
         boolean isPassive = application.passiveFailSafe();
 
@@ -64,7 +58,6 @@ public class UserInterface {
     }
 
     public void subscription() {
-
         System.out.println("The total payment: " + application.calcTotalPayment());
     }
 
@@ -74,7 +67,7 @@ public class UserInterface {
 
     public String getDecision() {
         decision = in.next();
-        //decision = decision.toLowerCase();
+        decision = decision.toLowerCase();
         return decision;
     }
 
@@ -87,7 +80,6 @@ public class UserInterface {
         decisionNumb = in.nextInt();
         return decisionNumb;
     }
-
 
     public void start() {
         System.out.println("\n\t\t\t\t\t\t\t\t\t\t\tWELCOME TO: ");
@@ -133,16 +125,15 @@ public class UserInterface {
             switch (choice) {
                 case 1 -> save();
                 case 2 -> subscription();
-                case 3 -> topFive();
-                case 4 -> create();
-                case 5 -> delete();
+                case 3 -> create();
+                case 4 -> delete();
+                case 5 -> topFive();
                 case 6 -> list();
                 case 0 -> exit();
-                default -> System.out.println("unknown command");
+                default -> System.out.println("Unknown command");
             }
         }
     }
-
 
     public void printMain() {
 
@@ -152,9 +143,9 @@ public class UserInterface {
                              
                 Save         [1] kan bruges
                 Subscription [2] kan bruges
-                Top Five     [3] kan ikke bruges
-                Add          [4] kan bruges
-                Delete       [5] kan bruges
+                Add          [3] kan bruges
+                Delete       [4] kan bruges
+                Top Five     [5] kan ikke bruges
                 List         [6] kan bruges
                 Exit         [0] kan bruges
                 """);
