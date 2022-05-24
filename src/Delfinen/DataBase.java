@@ -9,11 +9,10 @@ import java.util.Scanner;
 
 public class DataBase {
 
-    private ArrayList<Member> memberList;
-    private boolean keepGoing = true;
+    private final ArrayList<Member> memberList;
     UserInterface ui = new UserInterface(this);
 
-    //TODO compitionSwimmer har højeste prioritet for hvad der skal laves samt topFive
+    //TODO competitionSwimmer har højeste prioritet for hvad der skal laves samt topFive
 
     void run() throws FileNotFoundException {
         ui.start();
@@ -80,6 +79,7 @@ public class DataBase {
         int id = memberList.size() + 1;
         Member member = new Member(id, name, dateOfBirth, isPassive);
         memberList.add(member);
+        //memberList.add();
     }
 
     public boolean passiveActiveChange() { //TODO skal kunne skifte mellem aktiv og passiv
@@ -93,7 +93,7 @@ public class DataBase {
 
     public boolean passiveFailSafe() {
         boolean state = true;
-        keepGoing = true;
+        boolean keepGoing = true;
         while (keepGoing) {
             String passiveState = ui.getDecision();
             if (passiveState.equals("false")) {
@@ -109,17 +109,18 @@ public class DataBase {
     }
 
     public String nameFailSafe() {
-        keepGoing = true;
+        boolean keepGoing = true;
         String typedName = "";
         while (keepGoing) {
             typedName = ui.getDecision();
-            System.out.println(typedName);
+            //System.out.println(typedName);
             boolean keep = true;
             for (int i = 0; i < typedName.length(); i++) {
                 System.out.println(typedName.charAt(i));
-                if (!(typedName.charAt(i) >= 'a' && typedName.charAt(i) <= 'z')// TODO JESSICA !!! kig på ascii tabel.
-                        &&
-                        typedName.charAt(i) >= 'A' && typedName.charAt(i) <= 'Z' && typedName.charAt(i) == ' ') {
+                if ((typedName.charAt(i) >= 'a' && typedName.charAt(i) <= 'z')) // TODO JESSICA !!! kig på ascii tabel.
+                       // && && typedName.charAt(i) == ' '
+                        //typedName.charAt(i) >= 'A' && typedName.charAt(i) <= 'Z' && typedName.charAt(i) == ' ')
+                {
 
                     System.out.println("Contains illegal character. Try again.");
 
@@ -136,7 +137,7 @@ public class DataBase {
     }
 
     public String dateOfBirthFailSafe() {
-        keepGoing = true;
+        boolean keepGoing = true;
         String typedDateOfBirth = "";
         while (keepGoing) {
             typedDateOfBirth = ui.getDecision();
@@ -168,7 +169,6 @@ public class DataBase {
             if (member.getId() == id) {
                 return member;
             }
-
         }
         return null;
     }
@@ -181,7 +181,5 @@ public class DataBase {
             memberList.remove(member);
             return true;
         }
-
     }
-
 }

@@ -4,12 +4,10 @@ import java.time.LocalDate;
 import java.time.Period;
 
 public class Member {
-    private String name;
-    private boolean isPassive;
-    private int id;
-    private LocalDate dateOfBirth;
-
-
+    private final String name;
+    private final boolean isPassive;
+    private final int id;
+    private final LocalDate dateOfBirth;
 
     public Member(int id, String name, String dateOfBirth, boolean isPassive) {
         this.name = name;
@@ -38,7 +36,6 @@ public class Member {
         LocalDate now = LocalDate.now();
         Period period = Period.between(dateOfBirth, now);
         return period.getYears();
-
     }
 
     public int calcPayment(){

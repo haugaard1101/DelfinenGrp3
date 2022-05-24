@@ -5,12 +5,9 @@ import java.util.Scanner;
 
 public class UserInterface {
 
-
+    //private String decision;
     private final Scanner in = new Scanner(System.in);
-    private String decision;
-    private int decisionNumb;
     private final DataBase application;
-    private boolean decisionBoolean;
 
     public void save() throws FileNotFoundException { //TODO skal udskrive noget relevant tekst
         System.out.println("something");
@@ -42,14 +39,13 @@ public class UserInterface {
         } else {
             System.out.println("The member with Id " + id + " dose not exist");
         }
-
     }
 
     public void create() {
         System.out.println("create new member");
         System.out.print("name: ");
         String name = application.nameFailSafe();
-        System.out.print("Date of birth(yyyy-mm-dd): "); //Mangler failsafe
+        System.out.print("Date of birth(yyyy-mm-dd): ");
         String dateOfBirth = application.dateOfBirthFailSafe();
         System.out.print("are you passive: "); // TODO skal udskrive noget andet end "are you passive"
         boolean isPassive = application.passiveFailSafe();
@@ -66,18 +62,18 @@ public class UserInterface {
     }
 
     public String getDecision() {
-        decision = in.next();
+        String decision = in.next();
         decision = decision.toLowerCase();
         return decision;
     }
 
-    public boolean getDecisionBoolean() {
-        decisionBoolean = in.nextBoolean();
+    public boolean getDecisionBoolean() { //TODO bliver ikke brugt
+        boolean decisionBoolean = in.nextBoolean();
         return decisionBoolean;
     }
 
-    public int getDecisionNumb() {
-        decisionNumb = in.nextInt();
+    public int getDecisionNumb() { //TODO bliver ikke brugt
+        int decisionNumb = in.nextInt();
         return decisionNumb;
     }
 
@@ -116,7 +112,7 @@ public class UserInterface {
     }
 
     void switchMenu() throws FileNotFoundException {
-        Scanner in = new Scanner(System.in);
+        //Scanner in = new Scanner(System.in);
         int choice = 50;
         while (choice != 0) {
             printMain();
@@ -136,19 +132,18 @@ public class UserInterface {
     }
 
     public void printMain() {
-
         System.out.println("""
                                 
                 Main menu:
                              
                 Save         [1] kan bruges
                 Subscription [2] kan bruges
-                Add          [3] kan bruges
+                Create       [3] kan bruges
                 Delete       [4] kan bruges
                 Top Five     [5] kan ikke bruges
                 List         [6] kan bruges
                 Exit         [0] kan bruges
+                
                 """);
     }
-    
 }
