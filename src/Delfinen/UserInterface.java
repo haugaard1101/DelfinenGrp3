@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class UserInterface {
 
-    //private String decision;
+
     private final Scanner in = new Scanner(System.in);
     private final DataBase application;
 
@@ -15,7 +15,6 @@ public class UserInterface {
     }
 
     public void load() throws FileNotFoundException { //TODO skal udskrive noget relevant tekst
-        System.out.println("something");
         application.loadMembers();
     }
 
@@ -49,8 +48,27 @@ public class UserInterface {
         String dateOfBirth = application.dateOfBirthFailSafe();
         System.out.print("are you passive: "); // TODO skal udskrive noget andet end "are you passive"
         boolean isPassive = application.passiveFailSafe();
+        System.out.print("are you a competition swimmer: ");
+        boolean compSwim = application.competitionSwimmerFailSafe();
+        String disciplin;
+        String trainingResult;
+        String dateOfTraining;
+        if (compSwim) {
+            System.out.print("which disciplin: ");
+            disciplin = getDecision();
+            System.out.print("what is your training result: ");
+            trainingResult = getDecision();
+            System.out.print("date of your training: ");
+            dateOfTraining = getDecision();
 
-        application.addMember(name, dateOfBirth, isPassive);
+
+        } else {
+            disciplin = "";
+            trainingResult = "";
+            dateOfTraining = "";
+        }
+
+        application.addMember(name, dateOfBirth, isPassive, disciplin, trainingResult, dateOfTraining);
     }
 
     public void subscription() {
@@ -143,7 +161,7 @@ public class UserInterface {
                 Top Five     [5] kan ikke bruges
                 List         [6] kan bruges
                 Exit         [0] kan bruges
-                
+                                
                 """);
     }
 }

@@ -9,11 +9,20 @@ public class Member {
     private final int id;
     private final LocalDate dateOfBirth;
 
-    public Member(int id, String name, String dateOfBirth, boolean isPassive) {
+    private String disciplin;
+    private String trainingResult;
+    private String dateOfTraining;
+
+
+    public Member(int id, String name, String dateOfBirth, boolean isPassive,String disciplin,
+                  String trainingResult, String dateOfTraining) {
         this.name = name;
         this.id = id;
         this.isPassive = isPassive;
         this.dateOfBirth = LocalDate.parse(dateOfBirth);
+        this.disciplin=disciplin;
+        this.trainingResult=trainingResult;
+        this.dateOfTraining=dateOfTraining;
     }
 
     public String getName() {
@@ -32,6 +41,16 @@ public class Member {
         return id;
     }
 
+    public String getDisciplin(){
+        return disciplin;
+    }
+
+        public String getTrainingResult(){
+        return trainingResult;
+        }
+        public String getDateOfTraining(){
+        return dateOfTraining;
+        }
     public int calcAge() {
         LocalDate now = LocalDate.now();
         Period period = Period.between(dateOfBirth, now);
@@ -59,8 +78,12 @@ public class Member {
     @Override
     public String toString() {
         return
-                "ID: " + id +  " Name: " + name + " Date of birth: " + dateOfBirth + " State: " + isPassive ; // TODO skal ændre navn på "state".
+                "id: " + id +
+                ", name: " + name +
+                ", isPassive: " + isPassive +
+                ", dateOfBirth: " + dateOfBirth;
+               // ", disciplin: " + disciplin +
+                //", trainingResult: " + trainingResult +
+                //", dateOfTraining: " + dateOfTraining;
     }
-
-
 }

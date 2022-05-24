@@ -5,15 +5,16 @@ import java.time.LocalDate;
 public class CompetitionSwimmer extends Member {
     private String disciplin;
     private String trainingResult;
-    private int dateOfTraining;
+    private String dateOfTraining;
 
-    CompetitionSwimmer(String name, LocalDate dateOfBirth, boolean isPassive, int id, String disciplin,
-                       String trainingResult, int dateOfTrainin
-    ) {
-        super(name,dateOfBirth, haveBeenCS, isPassive,id);
+    CompetitionSwimmer(int id,String name,  String dateOfBirth, boolean isPassive, String disciplin,
+                       String trainingResult, String dateOfTraining) {
+        super(id, name,dateOfBirth,isPassive);
         this.disciplin = disciplin;
         this.trainingResult = trainingResult;
-        this.dateOfTraining = dateOfTraining;
+        this.dateOfTraining=dateOfTraining;
+
+
 
     }
 
@@ -25,11 +26,20 @@ public class CompetitionSwimmer extends Member {
         return trainingResult;
     }
 
-    public int getDateOfTraining() {
+    public String getDateOfTraining() {
         return dateOfTraining;
+    }
+
+    @Override
+    public String toString() {
+        return "Disciplin: "+disciplin +" Training Result: "+ trainingResult +" Date of Training: "+ dateOfTraining;
     }
 }
 
+
+
+
+
+
+
  */
-
-

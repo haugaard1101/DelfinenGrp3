@@ -32,7 +32,14 @@ public class DataBase {
         out.print(member.getDateOfBirth());
         out.print(";");
         out.print(member.getIsPassive());
+        out.print(";");
+        out.print(member.getDisciplin());
+        out.print(";");
+        out.print(member.getTrainingResult());
+        out.print(";");
+        out.print(member.getDateOfTraining());
         out.println();
+
     }
 
     public Iterable<Member> getAllMembers() { //TODO skal spørge om hvad "Iterable" er.
@@ -56,7 +63,10 @@ public class DataBase {
             String name = lineScanner.next();
             String dateOfBirth = lineScanner.next();
             boolean isPassive = lineScanner.nextBoolean();
-            memberList.add(new Member(id, name, dateOfBirth, isPassive));
+            String disciplin=lineScanner.next();
+            String trainingResult=lineScanner.next();
+            String dateOfTraining=lineScanner.next();
+            memberList.add(new Member(id, name, dateOfBirth, isPassive, disciplin, trainingResult, dateOfTraining));
         }
         return memberList;
 
@@ -75,17 +85,34 @@ public class DataBase {
 
     }
 
-    public void addMember(String name, String dateOfBirth, boolean isPassive) {
+    public void addMember(String name, String dateOfBirth, boolean isPassive, String disciplin, String trainingResult, String dateOfTraining) {
         int id = memberList.size() + 1;
-        Member member = new Member(id, name, dateOfBirth, isPassive);
+        Member member = new Member(id, name, dateOfBirth, isPassive, disciplin, trainingResult, dateOfTraining);
         memberList.add(member);
-        //memberList.add();
+    }
+
+    public boolean competitionSwimmerFailSafe() {
+        boolean isCompSwim = false;
+        boolean keepGoing = true;
+        String answer = ui.getDecision();
+        while (keepGoing) {
+            if (answer.equals("yes")) {
+                isCompSwim = true;
+                keepGoing = false;
+
+            } else if (answer.equals("no")) {
+                keepGoing = false;
+            } else
+                System.out.println("Typo (yes/no) ");
+        }
+        return isCompSwim;
+
     }
 
     public boolean passiveActiveChange() { //TODO skal kunne skifte mellem aktiv og passiv
-        String change= ui.getDecision();
+        String change = ui.getDecision();
 
-       // memberList;
+        // memberList;
         //TODO
 
         return false;
@@ -117,9 +144,9 @@ public class DataBase {
             boolean keep = true;
             for (int i = 0; i < typedName.length(); i++) {
                 System.out.println(typedName.charAt(i));
-                if ((typedName.charAt(i) >= 'a' && typedName.charAt(i) <= 'z')) // TODO JESSICA !!! kig på ascii tabel.
-                       // && && typedName.charAt(i) == ' '
-                        //typedName.charAt(i) >= 'A' && typedName.charAt(i) <= 'Z' && typedName.charAt(i) == ' ')
+                if (!(typedName.charAt(i) >= 'a' && typedName.charAt(i) <= 'z')) // TODO JESSICA !!! kig på ascii tabel.
+                // && && typedName.charAt(i) == ' '
+                //typedName.charAt(i) >= 'A' && typedName.charAt(i) <= 'Z' && typedName.charAt(i) == ' ')
                 {
 
                     System.out.println("Contains illegal character. Try again.");
