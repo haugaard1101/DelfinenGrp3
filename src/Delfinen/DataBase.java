@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 
-public class DataBase {
+public class DataBase implements Comparable<Member> {
 
     private final ArrayList<Member> memberList;
     UserInterface ui = new UserInterface(this);
@@ -16,7 +16,7 @@ public class DataBase {
 
     void run() throws FileNotFoundException {
         ui.start();
-        ui.load();
+        //ui.load();
         ui.switchMenu();
     }
 
@@ -63,9 +63,9 @@ public class DataBase {
             String name = lineScanner.next();
             String dateOfBirth = lineScanner.next();
             boolean isPassive = lineScanner.nextBoolean();
-            String disciplin=lineScanner.next();
-            String trainingResult=lineScanner.next();
-            String dateOfTraining=lineScanner.next();
+            String disciplin = lineScanner.next();
+            int trainingResult = lineScanner.nextInt();
+            String dateOfTraining = lineScanner.next();
             memberList.add(new Member(id, name, dateOfBirth, isPassive, disciplin, trainingResult, dateOfTraining));
         }
         return memberList;
@@ -83,12 +83,35 @@ public class DataBase {
 
     public void topFive() { //TODO har højeste prioritet for hvad der skal laves
 
+
+
     }
 
-    public void addMember(String name, String dateOfBirth, boolean isPassive, String disciplin, String trainingResult, String dateOfTraining) {
+    public void addMember(String name, String dateOfBirth, boolean isPassive, String disciplin, int trainingResult, String dateOfTraining) {
         int id = memberList.size() + 1;
         Member member = new Member(id, name, dateOfBirth, isPassive, disciplin, trainingResult, dateOfTraining);
         memberList.add(member);
+    }
+
+    public String disciplinFailSafe(){
+        boolean keepGoing = true;
+        String typedDisciplin = "";
+        while (keepGoing){
+            typedDisciplin = ui.getDecision();
+            if (typedDisciplin.equalsIgnoreCase("Butterfly")){
+                keepGoing = false;
+            } else if (typedDisciplin.equalsIgnoreCase("Crawl")){
+                keepGoing = false;
+            }else if(typedDisciplin.equalsIgnoreCase("Back crawl")){
+                keepGoing = false;
+            }else if (typedDisciplin.equalsIgnoreCase("Breast stroke")){
+                keepGoing = false;
+            }else{
+                System.out.println("Typo (Butterfly/Crawl/Back crawl/Breast stroke)");
+            }
+
+        }
+        return typedDisciplin;
     }
 
     public boolean competitionSwimmerFailSafe() {
@@ -109,13 +132,10 @@ public class DataBase {
 
     }
 
-    public boolean passiveActiveChange() { //TODO skal kunne skifte mellem aktiv og passiv
-        String change = ui.getDecision();
+    public void passiveActiveChange(int id) {
+        Member member = findMemberById(id);
+        member.setPassive(!member.getIsPassive());
 
-        // memberList;
-        //TODO
-
-        return false;
     }
 
     public boolean passiveFailSafe() {
@@ -123,10 +143,10 @@ public class DataBase {
         boolean keepGoing = true;
         while (keepGoing) {
             String passiveState = ui.getDecision();
-            if (passiveState.equals("false")) {
+            if (passiveState.equalsIgnoreCase("false")) {
                 state = false;
                 keepGoing = false;
-            } else if (passiveState.equals("true")) {
+            } else if (passiveState.equalsIgnoreCase("true")) {
                 keepGoing = false;
             } else {
                 System.out.println("Typo (true or false)");
@@ -208,5 +228,10 @@ public class DataBase {
             memberList.remove(member);
             return true;
         }
+    }
+
+    @Override
+    public int compareTo(Member o) {
+        return 0;
     }
 }

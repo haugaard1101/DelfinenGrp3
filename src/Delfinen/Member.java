@@ -5,17 +5,17 @@ import java.time.Period;
 
 public class Member {
     private final String name;
-    private final boolean isPassive;
+    private boolean isPassive;
     private final int id;
     private final LocalDate dateOfBirth;
 
-    private String disciplin;
-    private String trainingResult;
-    private String dateOfTraining;
+    private final String disciplin;
+    private final int trainingResult;
+    private final String dateOfTraining;
 
 
     public Member(int id, String name, String dateOfBirth, boolean isPassive,String disciplin,
-                  String trainingResult, String dateOfTraining) {
+                  int trainingResult, String dateOfTraining) {
         this.name = name;
         this.id = id;
         this.isPassive = isPassive;
@@ -33,6 +33,10 @@ public class Member {
         return isPassive;
     }
 
+    public void setPassive(boolean isPassive){
+        this.isPassive = isPassive;
+    }
+
     public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
@@ -45,7 +49,7 @@ public class Member {
         return disciplin;
     }
 
-        public String getTrainingResult(){
+        public int getTrainingResult(){
         return trainingResult;
         }
         public String getDateOfTraining(){

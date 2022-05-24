@@ -10,7 +10,8 @@ public class UserInterface {
     private final DataBase application;
 
     public void save() throws FileNotFoundException { //TODO skal udskrive noget relevant tekst
-        System.out.println("something");
+        //System.out.println("CURRENT MEMBERS SAVED \n" + application.getAllMembers() + "\n");
+        //System.out.println();
         application.saveMembers();
     }
 
@@ -51,21 +52,19 @@ public class UserInterface {
         System.out.print("are you a competition swimmer: ");
         boolean compSwim = application.competitionSwimmerFailSafe();
         String disciplin;
-        String trainingResult;
+        int trainingResult;
         String dateOfTraining;
         if (compSwim) {
             System.out.print("which disciplin: ");
             disciplin = getDecision();
             System.out.print("what is your training result: ");
-            trainingResult = getDecision();
+            trainingResult = getDecisionNumb();
             System.out.print("date of your training: ");
             dateOfTraining = getDecision();
-
-
         } else {
-            disciplin = "";
-            trainingResult = "";
-            dateOfTraining = "";
+            disciplin = "N/A";
+            trainingResult = 2147483647;
+            dateOfTraining = "N/A";
         }
 
         application.addMember(name, dateOfBirth, isPassive, disciplin, trainingResult, dateOfTraining);
@@ -129,8 +128,13 @@ public class UserInterface {
         System.exit(0);
     }
 
+    public void changePassiveState(){
+        System.out.print("Enter id: ");
+        int id = in.nextInt();
+        application.passiveActiveChange(id);
+    }
+
     void switchMenu() throws FileNotFoundException {
-        //Scanner in = new Scanner(System.in);
         int choice = 50;
         while (choice != 0) {
             printMain();
@@ -143,6 +147,7 @@ public class UserInterface {
                 case 4 -> delete();
                 case 5 -> topFive();
                 case 6 -> list();
+                case 7 -> changePassiveState();
                 case 0 -> exit();
                 default -> System.out.println("Unknown command");
             }
@@ -160,6 +165,7 @@ public class UserInterface {
                 Delete       [4] kan bruges
                 Top Five     [5] kan ikke bruges
                 List         [6] kan bruges
+                State        [7] kan bruges
                 Exit         [0] kan bruges
                                 
                 """);
