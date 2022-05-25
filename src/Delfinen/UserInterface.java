@@ -56,7 +56,7 @@ public class UserInterface {
         String dateOfTraining;
         if (compSwim) {
             System.out.print("which disciplin: ");
-            disciplin = getDecision();
+            disciplin = application.disciplinFailSafe();
             System.out.print("what is your training result: ");
             trainingResult = getDecisionNumb();
             System.out.print("date of your training: ");
